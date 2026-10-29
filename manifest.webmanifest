@@ -1,0 +1,17 @@
+{
+  "name": "Pooja Bridal Mehndi — Indore",
+  "short_name": "Pooja Mehndi",
+  "description": "Bridal, Arabic aur minimal mehndi artist in Indore. Ghar par service, ₹200 se shuru.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f7efdf",
+  "theme_color": "#310a12",
+  "icons": [
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

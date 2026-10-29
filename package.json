@@ -1,0 +1,18 @@
+{
+  "name": "pooja-bridal-mehndi",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Mobile-first portfolio & booking website for Pooja Bridal Mehndi, Indore.",
+  "scripts": {
+    "dev": "python3 -m http.server 5173 --bind 0.0.0.0",
+    "start": "python3 -m http.server 5173 --bind 0.0.0.0",
+    "optimize-images": "python3 tools/optimize-images.py",
+    "validate": "html-validate index.html"
+  },
+  "devDependencies": {
+    "html-validate": "^11.17.0"
+  },
+  "dependencies": {
+    "csstree-validator": "^4.0.1"
+  }
+}

@@ -1,0 +1,12 @@
+node_modules/
+package-lock.json
+.DS_Store
+*.log
+
+# raw / un-optimised photos (web ke liye opt/ folder use hota hai)
+assets/img/incoming/*
+!assets/img/incoming/.gitkeep
+
+# tool caches
+__pycache__/
+.htmlvalidate.json
