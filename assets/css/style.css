@@ -108,14 +108,24 @@ h1, h2, h3, h4 { margin: 0; font-family: var(--font-display); font-weight: 500; 
 
 .section { padding-block: 56px; position: relative; }
 .section--tight { padding-block: 44px; }
-.section--cream { background: var(--cream-2); }
-.section--sand { background: var(--sand); }
+.section--cream {
+  background-color: var(--cream-2);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='88' viewBox='0 0 88 88'%3E%3Cg fill='none' stroke='%23a67c34' stroke-width='1' opacity='0.13'%3E%3Cpath d='M44 12 76 44 44 76 12 44Z'/%3E%3Cpath d='M44 25 63 44 44 63 25 44Z'/%3E%3C/g%3E%3Cg fill='%23a67c34' opacity='0.13'%3E%3Ccircle cx='44' cy='44' r='2.2'/%3E%3Ccircle cx='44' cy='4' r='1.3'/%3E%3Ccircle cx='44' cy='84' r='1.3'/%3E%3Ccircle cx='4' cy='44' r='1.3'/%3E%3Ccircle cx='84' cy='44' r='1.3'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 88px 88px;
+}
+.section--sand {
+  background-color: var(--sand);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='88' viewBox='0 0 88 88'%3E%3Cg fill='none' stroke='%23a67c34' stroke-width='1' opacity='0.13'%3E%3Cpath d='M44 12 76 44 44 76 12 44Z'/%3E%3Cpath d='M44 25 63 44 44 63 25 44Z'/%3E%3C/g%3E%3Cg fill='%23a67c34' opacity='0.13'%3E%3Ccircle cx='44' cy='44' r='2.2'/%3E%3Ccircle cx='44' cy='4' r='1.3'/%3E%3Ccircle cx='44' cy='84' r='1.3'/%3E%3Ccircle cx='4' cy='44' r='1.3'/%3E%3Ccircle cx='84' cy='44' r='1.3'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 88px 88px;
+}
 .section--wine {
   background: var(--wine-900);
   color: var(--cream);
   background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='88' viewBox='0 0 88 88'%3E%3Cg fill='none' stroke='%23e0c493' stroke-width='1' opacity='0.16'%3E%3Cpath d='M44 12 76 44 44 76 12 44Z'/%3E%3Cpath d='M44 25 63 44 44 63 25 44Z'/%3E%3C/g%3E%3Cg fill='%23e0c493' opacity='0.16'%3E%3Ccircle cx='44' cy='44' r='2.2'/%3E%3Ccircle cx='44' cy='4' r='1.3'/%3E%3Ccircle cx='44' cy='84' r='1.3'/%3E%3Ccircle cx='4' cy='44' r='1.3'/%3E%3Ccircle cx='84' cy='44' r='1.3'/%3E%3C/g%3E%3C/svg%3E"),
     radial-gradient(circle at 12% 0%, rgba(200, 164, 92, 0.14), transparent 45%),
     radial-gradient(circle at 88% 100%, rgba(106, 26, 37, 0.5), transparent 50%);
+  background-size: 88px 88px, auto, auto;
 }
 
 .eyebrow {
