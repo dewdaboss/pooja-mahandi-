@@ -1,7 +1,8 @@
 # Pooja Bridal Mehndi — Indore
 
 Mobile-first portfolio + booking website for **Pooja Bridal Mehndi** (mehndi artist, Indore).
-Ek hi page, poora portfolio, price list, FAQ aur WhatsApp booking form.
+2 pages: home (services, price, teaser gallery, booking) + **portfolio page** (18 designs,
+category-wise with rates).
 
 🔗 Instagram: [@pooja_bridal_mehndi._](https://www.instagram.com/pooja_bridal_mehndi._)
 📞 WhatsApp / Call: +91 97555 50380
@@ -16,85 +17,107 @@ npm run dev          # http://localhost:5173
 
 Ya bilkul simple — `index.html` ko browser mein seedha khol lein.
 Koi build step nahi hai, plain HTML + CSS + JS.
-
 Deploy karna ho to GitHub Pages / Netlify / Vercel par yeh folder drag-drop kar dein.
 
 ---
 
-## 2. Kya-kya file hai
+## 2. Files
 
 | File | Kaam |
 | --- | --- |
-| `index.html` | Poora page — sections, text, prices, FAQ |
-| `assets/css/style.css` | Design (mobile-first, tokens ke saath) |
-| `assets/js/site-config.js` | **Content settings** — number, portfolio photos, areas, reviews |
-| `assets/js/app.js` | Gallery, filters, lightbox, WhatsApp links, booking form |
-| `assets/img/opt/` | Optimised (webp) photos jo site par dikhti hain |
-| `assets/img/incoming/` | Aapki nayi raw photos (yahan daalein) |
-| `tools/optimize-images.py` | Photos ko webp + 3 sizes mein convert karta hai |
+| `index.html` | Home — hero, price cards, teaser gallery, about, process, FAQ, booking form, areas |
+| `portfolio.html` | **Portfolio** — 18 designs, category-wise sections + rate list |
+| `assets/css/style.css` | Poora design (mobile-first, tokens) |
+| `assets/js/site-config.js` | **Saara content** — number, categories, rate, photos, areas, reviews |
+| `assets/js/app.js` | Cards, filters, gallery, lightbox, WhatsApp links, booking form |
+| `assets/img/opt/` | Optimised (webp) photos — 360 / 480 / 736 px |
+| `assets/img/portfolio/` | Full-size (jpeg) originals |
+| `assets/img/incoming/` | Nayi raw photos yahan daalein |
+| `tools/optimize-images.py` | Photos ko webp + sizes mein convert karta hai |
 
 ---
 
-## 3. Roz-marra ke badlav (cheat sheet)
+## 3. Categories & rate (abhi site par yeh hai)
+
+| # | Category | Rate | Time |
+| --- | --- | --- | --- |
+| 1 | Simple & Minimal | ₹200 se | 20–30 min |
+| 2 | Festive & Karwa Chauth | ₹400 se | 40–60 min |
+| 3 | Arabic & Floral | ₹600 se | 45–70 min |
+| 4 | Frame & Portrait Design | ₹1,500 se | 1.5–2.5 ghante |
+| 5 | Rajwadi Bridal | ₹2,500 se | 2–3 ghante |
+| 6 | Bridal Package (haath + pair) | ₹5,000 se | 3–4 ghante |
+
+⚠️ Yeh rate **suggestion** hain (design ki difficulty ke hisaab se, easy → bridal).
+Pooja di final rate confirm karein — sirf `site-config.js` ke `categories` mein
+`price` badalna hai, poore site par (cards, portfolio, WhatsApp message) update ho jayega.
+
+Portfolio mein 18 designs hain: minimal 4, festive 2, arabic 4, portrait 4, rajwadi 4.
+
+---
+
+## 4. Roz-marra ke badlav (cheat sheet)
 
 ### WhatsApp number / Instagram
-`assets/js/site-config.js` → `whatsapp`, `phoneDisplay`, `instagramUrl`, `instagramHandle`.
-(Number country code ke saath, bina `+` ke: `919755550380`)
+`assets/js/site-config.js` → `whatsapp`, `phoneDisplay`, `instagramUrl`.
+Number format: `919755550380` (bina `+`, bina space).
 
-⚠️ `index.html` mein bhi `tel:+919755550380` aur `+91 97555 50380` likha hai — number badle to
-wahan bhi search-replace kar dein (5-6 jagah hai).
+### Rate badalna
+`site-config.js` → `categories` → us category ka `price`.
 
-### Prices / packages
-`index.html` → `id="services"` section. Har card mein `card__price` aur `card__list` edit karein.
-Abhi ke rate **placeholder** hain (₹200 / ₹500 / ₹1,500 / ₹5,000 "se shuru") — Pooja di jo
-final rate bolein, wahi daal dein.
-
-### Portfolio photos
-1. Photos `assets/img/incoming/` mein daalein.
-2. `npm run optimize-images` (ya `python3 tools/optimize-images.py`).
-3. `assets/js/site-config.js` ke `gallery` array mein entry jodein:
+### Naya design add karna
+1. Photo `assets/img/incoming/` mein daalein.
+2. `npm run optimize-images` chalaayein (ya `python3 tools/optimize-images.py`).
+3. `site-config.js` ke `gallery` array mein entry jodein:
 
 ```js
 {
-  src: "assets/img/opt/meri-photo-1200.webp",
+  src: "assets/img/opt/meri-photo-736.webp",
   thumb: "assets/img/opt/meri-photo-480.webp",
-  cat: "bridal",              // bridal | arabic | minimal | feet | detail
-  title: "Bridal Full Hand",
-  alt: "Bridal mehndi design — Pooja, Indore",
+  cat: "rajwadi",            // minimal | festive | arabic | portrait | rajwadi
+  title: "Peacock Bridal — Naya Design",
+  alt: "Peacock rajwadi mehndi design on both hands — Indore",
 },
 ```
 
-### Reviews
-`site-config.js` mein `showReviews: false` hai — **asli** client reviews milne par
-`reviews` array mein daalein aur `showReviews: true` kar dein.
-(Neeche jo sample reviews likhe hain wo sirf format dikhane ke liye hain, live na karein.)
+`cat` categories ke `slug` se match hona chahiye — portfolio page usi section mein
+photo daal dega.
 
-### Service areas
-`site-config.js` → `areas` array. Naya area add/remove kar dein.
+### Naya category
+`categories` mein naya object add karein (`slug`, `name`, `tag`, `price`, `time`,
+`blurb`, `points`). Home page card + portfolio section + filter + booking dropdown
+sab automatic ban jayenge. `serviceOptions` mein bhi ek line add kar lena.
+
+### Gallery order / teaser
+Home page par har category se 2 designs dikhte hain (teaser). Badalna ho to
+`app.js` ke `pickFeatured` / `teaserSlugs` ko chhed lein.
+
+### Reviews
+`showReviews: false` hai — asli client reviews milne par `reviews` array bhar dein
+aur `showReviews: true` kar dein. Tab tak section + uska nav link hidden rehta hai.
 
 ### FAQ / About text
 Seedha `index.html` mein edit karein.
 
 ---
 
-## 4. Ahem note — abhi ki photos
+## 5. Photos ke baare mein note
 
-`assets/img/portfolio/` aur `assets/img/hero/` ki photos **AI-generated placeholder** hain
-(design dekhne ke liye). Inhe Pooja di ki asli mehndi photos se replace karna hai — portfolio
-ki asli value wahin se aayegi. Replace karte waqt file ke naam wahi rakhein, ya
-`site-config.js` mein naya path daal dein.
-
-Aur haan: yahan ke **prices, reviews aur timing** placeholder hain — publish karne se pehle
-ek baar confirm kar lein.
+Abhi portfolio mein 18 designs hain (minimal → rajwadi). Yeh images aapne
+Instagram/Pinterest se reference ke liye di hain. **Publish se pehle** confirm kar lein
+ki ye designs Pooja di ke apne kaam ke hain (ya unki banayi hui photos se replace kar dein) —
+portfolio ki asli value unke apne kaam se hi aati hai. Replace karte waqt file ke naam wahi
+rakhein, ya `site-config.js` mein path badal dein.
 
 ---
 
-## 5. Tech notes
+## 6. Tech notes
 
 - Zero dependencies, zero build. Sirf Google Fonts (Cormorant Garamond + Jost).
-- Mobile-first CSS, `svh/dvh` units, safe-area insets (iPhone notch), reduced-motion support.
-- Sticky bottom bar on mobile (Call / WhatsApp / Instagram), floating WhatsApp on desktop.
-- Gallery: filter + lightbox (keyboard arrows, swipe support).
-- Booking form → seedha prefilled WhatsApp message banata hai (koi server, koi data store nahi).
-- SEO: meta tags, Open Graph, `BeautySalon` JSON-LD, semantic headings, alt text on images.
-- Accessibility: skip link, focus styles, ARIA on nav/filters/lightbox, 44px+ tap targets.
+- Mobile-first CSS, `svh/dvh`, safe-area insets (iPhone notch), reduced-motion support.
+- Mobile: sticky bottom bar (Call / WhatsApp / Instagram). Desktop: floating WhatsApp + split hero.
+- Gallery: category filter, lightbox (keyboard arrows, swipe), per-category navigation.
+- Booking form → prefilled WhatsApp message (koi server, koi data store nahi).
+- SEO: meta + Open Graph, `BeautySalon` JSON-LD, semantic headings, alt text, sitemap.
+- Accessibility: skip link, focus rings, ARIA (nav/filters/lightbox), 44px+ tap targets.
+- Validation: `npm run validate` (html-validate) — dono pages clean.
