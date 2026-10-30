@@ -1161,15 +1161,245 @@ body { padding-bottom: calc(var(--bar-h) + env(safe-area-inset-bottom)); }
 .lightbox__nav--prev { justify-self: start; }
 .lightbox__nav--next { justify-self: end; }
 
-/* ---------- 23. REVEAL ANIMATION ---------- */
+/* ---------- 23. ANIMATIONS & MOTION ---------- */
 .no-js .reveal { opacity: 1; transform: none; }
 
 .reveal {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  transform: translateY(26px);
+  transition:
+    opacity 0.8s var(--ease),
+    transform 0.8s var(--ease);
+  transition-delay: var(--d, 0ms);
+  will-change: opacity, transform;
 }
 .reveal.is-in { opacity: 1; transform: none; }
+
+/* alternative reveal styles (data-anim se choose hota hai) */
+.reveal[data-anim="left"]  { transform: translateX(-30px); }
+.reveal[data-anim="right"] { transform: translateX(30px); }
+.reveal[data-anim="zoom"]  { transform: scale(0.94); }
+.reveal[data-anim="fade"]  { transform: none; }
+
+/* stagger helper — JS se --d set hota hai, fallback manual classes */
+.reveal--d1 { --d: 70ms; }
+.reveal--d2 { --d: 140ms; }
+.reveal--d3 { --d: 210ms; }
+.reveal--d4 { --d: 280ms; }
+.reveal--d5 { --d: 350ms; }
+
+/* section headings ka underline animate ho */
+.section__title::after,
+.psection__title::after {
+  transform: scaleX(0.15);
+  transform-origin: left center;
+  opacity: 0;
+  transition: transform 0.9s var(--ease) 0.15s, opacity 0.6s ease 0.15s;
+}
+.section__head--center .section__title::after { transform-origin: center; }
+.is-in .section__title::after,
+.is-in .psection__title::after,
+.section__head.is-in .section__title::after {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+/* card hover lift + gold sheen */
+.card,
+.review,
+.step,
+.ratenote {
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.3s;
+}
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), rgba(200, 164, 92, 0.16), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+.card:hover::after { opacity: 1; }
+
+/* gallery thumbnails — image reveal on load */
+.gcard img {
+  opacity: 0;
+  transition: opacity 0.6s ease, transform 0.7s var(--ease);
+}
+.gcard img.is-loaded { opacity: 1; }
+
+/* gcard entrance stagger */
+.gcard { animation: cardRise 0.6s var(--ease) both; }
+@keyframes cardRise {
+  from { opacity: 0; transform: translateY(14px) scale(0.98); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* buttons: shine sweep */
+.btn--gold,
+.btn--wine {
+  position: relative;
+  overflow: hidden;
+}
+.btn--gold::after,
+.btn--wine::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transform: skewX(-18deg);
+  transition: left 0.65s var(--ease);
+  pointer-events: none;
+}
+.btn--gold:hover::after,
+.btn--wine:hover::after { left: 130%; }
+
+/* WhatsApp fab pulse */
+.fab::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 0 0 rgba(31, 170, 89, 0.5);
+  animation: fabPulse 2.6s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes fabPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(31, 170, 89, 0.45); }
+  70%  { box-shadow: 0 0 0 18px rgba(31, 170, 89, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(31, 170, 89, 0); }
+}
+.fab { position: fixed; }
+
+/* hero content staggering on load */
+.hero__content > * {
+  animation: heroUp 0.85s var(--ease) both;
+}
+.hero__content > *:nth-child(1) { animation-delay: 0.05s; }
+.hero__content > *:nth-child(2) { animation-delay: 0.15s; }
+.hero__content > *:nth-child(3) { animation-delay: 0.28s; }
+.hero__content > *:nth-child(4) { animation-delay: 0.4s; }
+.hero__content > *:nth-child(5) { animation-delay: 0.5s; }
+@keyframes heroUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* page transition veil */
+.page-veil {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  background: var(--wine-950);
+  display: grid;
+  place-items: center;
+  color: var(--gold-soft);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s var(--ease);
+}
+.page-veil.is-on { opacity: 1; pointer-events: all; }
+.page-veil svg { width: 54px; height: 54px; animation: veilSpin 1.4s linear infinite; }
+@keyframes veilSpin { to { transform: rotate(360deg); } }
+
+/* scroll progress line */
+.scrollbar-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: linear-gradient(90deg, var(--gold-deep), var(--gold-soft));
+  z-index: 90;
+  pointer-events: none;
+}
+
+/* number counters (stats) */
+.stat__num { font-variant-numeric: tabular-nums; }
+
+/* gallery "view all" tilting card */
+.gcard__label {
+  transform: translateY(6px);
+  opacity: 0.92;
+  transition: transform 0.45s var(--ease), opacity 0.3s;
+}
+.gcard:hover .gcard__label { transform: none; opacity: 1; }
+
+/* respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero__content > *, .gcard { animation: none !important; }
+  .btn::after, .fab::before { display: none; }
+}
+
+
+/* ---------- 23b. COVERAGE LEVEL (kitni mehndi) ---------- */
+.level {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px 9px;
+  margin: 12px 0 0;
+  font-size: 11.5px;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft);
+}
+.level__label {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 9.5px;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+.level__dots { display: inline-flex; gap: 4px; }
+.level__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(106, 85, 70, 0.18);
+  transition: background 0.3s, transform 0.3s var(--ease);
+}
+.level__dot.is-on {
+  background: linear-gradient(140deg, var(--gold-soft), var(--gold-deep));
+  transform: scale(1.05);
+}
+.level__word {
+  font-family: var(--font-display);
+  font-size: 14px;
+  color: var(--gold-deep);
+  font-style: italic;
+}
+.level--card {
+  margin: 10px 0 0;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+.level--card .level__dot { width: 6px; height: 6px; }
+
+/* portfolio page: dark section variant not needed; psection is light */
+.psection .level { margin-top: 14px; }
+
+/* price bubble animation on scroll */
+.psection__price {
+  position: relative;
+}
+.psection__price::after {
+  content: "";
+  position: absolute;
+  inset: -6px -10px;
+  border-radius: 12px;
+  background: radial-gradient(60% 100% at 30% 50%, rgba(200, 164, 92, 0.22), transparent 70%);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.is-in .psection__price::after { opacity: 1; }
 
 /* =========================================================================
    24. RESPONSIVE — tablet

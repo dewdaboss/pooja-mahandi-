@@ -13,6 +13,11 @@
   const $$ = (s, ctx = document) => Array.from(ctx.querySelectorAll(s));
   const PHONE_TEL = "tel:+" + cfg.whatsapp;
 
+  // "Bridal Package — Haath + Pair" -> "Bridal"
+  function shortName(cat) {
+    return cat.name.split(" — ")[0].split(" & ")[0].trim();
+  }
+
   /* =====================================================================
      1. WHATSAPP LINKS
      ===================================================================== */
@@ -103,16 +108,20 @@
   const serviceWrap = $("#serviceCards");
   if (serviceWrap) {
     serviceWrap.innerHTML = cfg.categories
-      .map((cat) => {
+      .map((cat, i) => {
         const points = cat.points.map((p) => `<li>${p}</li>`).join("");
         const badge = cat.feature ? `<span class="card__badge">${cat.tag}</span>` : "";
         return `
-        <article class="card${cat.feature ? " card--feature" : ""} reveal">
+        <article class="card${cat.feature ? " card--feature" : ""} reveal reveal--d${Math.min(i + 1, 5)}">
           ${badge}
           <div class="card__top">
             <h3 class="card__title">${cat.name}</h3>
             <p class="card__price"><span>shuru</span> ${cat.price}</p>
           </div>
+          <p class="level level--card">
+            <span class="level__dots" aria-hidden="true">${Array.from({ length: 5 }, (_, k) => `<span class="level__dot${k < Math.max(1, Math.min(5, cat.level || 1)) ? " is-on" : ""}"></span>`).join("")}</span>
+            <span class="level__label">${"Kitni mehndi".replace("K", "k")}</span>
+          </p>
           <p class="card__desc">${cat.blurb}</p>
           <ul class="card__list">${points}</ul>
           <a class="card__cta" href="${waLink(null, categoryMessage(cat))}" target="_blank" rel="noopener">
@@ -141,14 +150,20 @@
   });
   const pickFeatured = teaser.slice(0, 8);
 
-  function cardMarkup(item) {
+  function cardMarkup(item, i) {
     return `
-      <button type="button" class="gcard" data-cat="${item.cat}" data-index="${item.index}" aria-label="${item.title} — photo bada karein">
+      <button type="button" class="gcard" data-cat="${item.cat}" data-index="${item.index}" style="animation-delay:${Math.min(i, 8) * 45}ms" aria-label="${item.title} — photo bada karein">
         <img src="${item.thumb}" alt="${item.alt}" loading="lazy" decoding="async" width="480" height="640" />
         <span class="gcard__zoom">${zoomIcon}</span>
         <span class="gcard__label">${item.title}</span>
       </button>`;
   }
+
+  // image fade-in jab load ho jaye
+  document.addEventListener("load", (e) => {
+    const img = e.target;
+    if (img.tagName === "IMG" && img.closest(".gcard")) img.classList.add("is-loaded");
+  }, true);
 
   if (galleryEl && filtersEl) {
     // filters
@@ -156,10 +171,10 @@
       `<button type="button" class="filter is-active" data-filter="all" aria-pressed="true">Sab</button>` +
       cfg.categories
         .filter((c) => !c.noGallery)
-        .map((c) => `<button type="button" class="filter" data-filter="${c.slug}" aria-pressed="false">${c.name.split(" — ")[0].split(" & ")[0]}</button>`)
+        .map((c) => `<button type="button" class="filter" data-filter="${c.slug}" aria-pressed="false">${shortName(c)}</button>`)
         .join("");
 
-    galleryEl.innerHTML = pickFeatured.map(cardMarkup).join("");
+    galleryEl.innerHTML = pickFeatured.map((it, i) => cardMarkup(it, i)).join("");
 
     filtersEl.addEventListener("click", (e) => {
       const btn = e.target.closest(".filter");
@@ -190,6 +205,10 @@
           .map((it) => Object.assign({}, it, { index: cfg.gallery.indexOf(it) }));
         if (!items.length) return "";
         const points = cat.points.map((p) => `<li>${p}</li>`).join("");
+        const level = Math.max(1, Math.min(5, cat.level || 1));
+        const dots = Array.from({ length: 5 }, (_, k) =>
+          `<span class="level__dot${k < level ? " is-on" : ""}"></span>`).join("");
+        const levelWord = ["", "Bahut halki", "Halki", "Medium", "Bharpoor", "Poori bridal"][level];
         return `
         <section class="psection" id="${cat.slug}">
           <div class="container">
@@ -199,6 +218,11 @@
                 <p class="eyebrow">${cat.tag}</p>
                 <h2 class="psection__title">${cat.name}</h2>
                 <p class="psection__blurb">${cat.blurb}</p>
+                <p class="level" aria-label="Mehndi coverage ${level} out of 5">
+                  <span class="level__label">Kitni mehndi:</span>
+                  <span class="level__dots" aria-hidden="true">${dots}</span>
+                  <span class="level__word">${levelWord}</span>
+                </p>
                 <ul class="psection__points">${points}</ul>
               </div>
               <div class="psection__meta">
@@ -210,8 +234,8 @@
               </div>
             </header>
             <div class="pgallery">
-              ${items.map((it) => `
-                <button type="button" class="gcard" data-cat="${it.cat}" data-index="${it.index}" aria-label="${it.title} — photo bada karein">
+              ${items.map((it, idx) => `
+                <button type="button" class="gcard" data-cat="${it.cat}" data-index="${it.index}" style="animation-delay:${Math.min(idx, 6) * 55}ms" aria-label="${it.title} — photo bada karein">
                   <img src="${it.thumb}" alt="${it.alt}" loading="lazy" decoding="async" width="480" height="640" />
                   <span class="gcard__zoom">${zoomIcon}</span>
                   <span class="gcard__label">${it.title}</span>
@@ -225,7 +249,7 @@
     if (jumpNav) {
       jumpNav.innerHTML = cfg.categories
         .filter((c) => !c.noGallery)
-        .map((c) => `<a class="jump__link" href="#${c.slug}">${c.name.split(" — ")[0]}<span>${c.price}</span></a>`)
+        .map((c) => `<a class="jump__link" href="#${c.slug}">${shortName(c)}<span>${c.price}</span></a>`)
         .join("");
     }
   }
@@ -427,8 +451,18 @@
   }
 
   /* =====================================================================
-     11. SCROLL REVEAL
+     11. SCROLL REVEAL + MOTION EXTRAS
      ===================================================================== */
+  // auto stagger: ek hi parent ke andar reveal wale bachche
+  $$(".cards, .steps, .reviews, .pgallery").forEach((grid) => {
+    $$(":scope > .reveal", grid).forEach((el, i) => {
+      if (!el.style.getPropertyValue("--d")) el.style.setProperty("--d", `${i * 70}ms`);
+    });
+  });
+
+  // headings ko animate karna hai — head ko bhi reveal banao
+  $$(".section__head, .psection__head").forEach((el) => el.classList.add("reveal"));
+
   const revealEls = $$(".reveal");
   if ("IntersectionObserver" in window && revealEls.length) {
     const io = new IntersectionObserver(
@@ -445,6 +479,48 @@
     revealEls.forEach((el) => io.observe(el));
   } else {
     revealEls.forEach((el) => el.classList.add("is-in"));
+  }
+
+  // card hover par gold sheen follow kare
+  $$(".card").forEach((card) => {
+    card.addEventListener("pointermove", (e) => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty("--mx", `${e.clientX - r.left}px`);
+      card.style.setProperty("--my", `${e.clientY - r.top}px`);
+    });
+  });
+
+  // scroll progress line
+  const progress = document.createElement("div");
+  progress.className = "scrollbar-progress";
+  document.body.appendChild(progress);
+  const updateProgress = () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.transform = `scaleX(${h > 0 ? Math.min(window.scrollY / h, 1) : 0})`;
+  };
+  updateProgress();
+  window.addEventListener("scroll", updateProgress, { passive: true });
+
+  // smooth page transition (internal links)
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const veil = document.createElement("div");
+    veil.className = "page-veil";
+    veil.innerHTML = `<svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="30 100"/><circle cx="24" cy="24" r="14" fill="none" stroke="currentColor" stroke-width=".6" opacity=".5"/></svg>`;
+    document.body.appendChild(veil);
+
+    document.addEventListener("click", (e) => {
+      const a = e.target.closest("a");
+      if (!a) return;
+      const href = a.getAttribute("href") || "";
+      if (a.target === "_blank" || a.hasAttribute("download")) return;
+      if (!href || href.startsWith("#") || href.startsWith("tel:") || href.startsWith("mailto:")) return;
+      if (!/^[\w./-]+\.html/.test(href) && !/^\/?$/.test(href)) return;
+      // same-page anchor
+      if (href.split("#")[0] === window.location.pathname.split("/").pop()) return;
+      e.preventDefault();
+      veil.classList.add("is-on");
+      setTimeout(() => { window.location.href = href; }, 320);
+    });
   }
 
   /* =====================================================================

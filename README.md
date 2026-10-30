@@ -26,7 +26,7 @@ Deploy karna ho to GitHub Pages / Netlify / Vercel par yeh folder drag-drop kar 
 | File | Kaam |
 | --- | --- |
 | `index.html` | Home — hero, price cards, teaser gallery, about, process, FAQ, booking form, areas |
-| `portfolio.html` | **Portfolio** — 18 designs, category-wise sections + rate list |
+| `portfolio.html` | **Portfolio** — 28 designs, 7 category sections + rate list |
 | `assets/css/style.css` | Poora design (mobile-first, tokens) |
 | `assets/js/site-config.js` | **Saara content** — number, categories, rate, photos, areas, reviews |
 | `assets/js/app.js` | Cards, filters, gallery, lightbox, WhatsApp links, booking form |
@@ -39,22 +39,24 @@ Deploy karna ho to GitHub Pages / Netlify / Vercel par yeh folder drag-drop kar 
 
 ## 3. Categories & rate (abhi site par yeh hai)
 
-| # | Category | Rate | Time |
-| --- | --- | --- | --- |
-| 1 | Simple & Minimal | ₹200 se | 20–30 min |
-| 2 | Festive & Karwa Chauth | ₹400 se | 40–60 min |
-| 3 | Arabic & Floral | ₹600 se | 45–70 min |
-| 4 | Frame & Portrait Design | ₹1,500 se | 1.5–2.5 ghante |
-| 5 | Rajwadi Bridal | ₹2,500 se | 2–3 ghante |
-| 6 | Bridal Package (haath + pair) | ₹5,000 se | 3–4 ghante |
+Rate ka rule: **jitni kam mehndi, utna kam rate.**
 
-⚠️ Yeh rate **suggestion** hain (design ki difficulty ke hisaab se, easy → bridal).
-Pooja di final rate confirm karein — sirf `site-config.js` ke `categories` mein
-`price` badalna hai, poore site par (cards, portfolio, WhatsApp message) update ho jayega.
+| # | Category | Kitni mehndi | Rate | Time | Designs |
+| --- | --- | --- | --- | --- | --- |
+| 1 | Simple & Minimal | ●○○○○ | ₹200 se | 20–30 min | 3 |
+| 2 | Floral & Arabic | ●●○○○ | ₹500 se | 40–60 min | 4 |
+| 3 | Festive & Karwa Chauth | ●●○○○ | ₹700 se | 45–70 min | 4 |
+| 4 | Peacock & Motif | ●●●○○ | ₹900 se | 1 ghanta | 3 |
+| 5 | Half Hand | ●●●○○ | ₹1,200 se | 1–1.5 ghanta | 2 |
+| 6 | Portrait & Couple | ●●●●○ | ₹2,000 se | 1.5–2.5 ghante | 4 |
+| 7 | Bridal Full Hand | ●●●●○ | ₹2,800 se | 2–3 ghante | 8 |
+| 8 | Bridal Package (haath + pair) | ●●●●● | ₹5,000 se | 3–4 ghante | — |
 
-Portfolio mein 18 designs hain: minimal 4, festive 2, arabic 4, portrait 4, rajwadi 4.
+**Total 28 designs.** Level dots (`level: 1–5` in config) ka matlab hai kitna haath bharna hai —
+wahi dots site par dikhte hain, isliye client ko rate ka logic khud samajh aa jaata hai.
 
----
+⚠️ Rate **suggestion** hain — Pooja di final rate confirm karein. Sirf `site-config.js` ke
+`categories` mein `price` badalna hai; cards, portfolio, WhatsApp message sab update ho jayenge.
 
 ## 4. Roz-marra ke badlav (cheat sheet)
 
@@ -64,6 +66,13 @@ Number format: `919755550380` (bina `+`, bina space).
 
 ### Rate badalna
 `site-config.js` → `categories` → us category ka `price`.
+
+### Photo ke naam ka rule
+File ka naam design ka kaam batata hai — isse manage karna aasan rehta hai:
+`category-design.webp` jaise
+`bridal-mandala-forearm-736.webp`, `minimal-palm-dots-480.webp`, `halfhand-rose-mandala-736.webp`.
+Har photo ke 3 size hote hain (`-360`, `-480`, `-736`) aur full-size original
+`assets/img/portfolio/<naam>.jpg` mein.
 
 ### Naya design add karna
 1. Photo `assets/img/incoming/` mein daalein.
@@ -120,4 +129,8 @@ rakhein, ya `site-config.js` mein path badal dein.
 - Booking form → prefilled WhatsApp message (koi server, koi data store nahi).
 - SEO: meta + Open Graph, `BeautySalon` JSON-LD, semantic headings, alt text, sitemap.
 - Accessibility: skip link, focus rings, ARIA (nav/filters/lightbox), 44px+ tap targets.
-- Validation: `npm run validate` (html-validate) — dono pages clean.
+- Validation: `npm run validate` (html-validate) — teeno pages clean.
+- **Animations:** scroll reveal (fade + slide + stagger), animated section underlines,
+  hero text stagger on load, card gold-sheen on hover, button shine sweep, WhatsApp pulse,
+  gallery image fade-in, scroll progress line, smooth page-transition veil.
+  Sab `prefers-reduced-motion` respect karte hain (accessibility).
