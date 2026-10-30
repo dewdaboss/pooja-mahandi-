@@ -23,6 +23,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/css/style.css" />
+<link rel="stylesheet" href="assets/css/components.css" />
 <script>document.documentElement.classList.remove("no-js");</script>
 </head>
 
@@ -102,6 +103,56 @@
         par saare designs dekhein.</p>
     </div>
   </noscript>
+
+  <!-- ============ FULL PRICE TABLE ============ -->
+  <section class="section section--cream" id="ratecard">
+    <div class="container">
+      <header class="section__head section__head--center reveal">
+        <p class="eyebrow">Rate Card</p>
+        <h2 class="section__title">Poora rate card — ek nazar mein</h2>
+        <p class="section__lede">
+          Rate is baat par ki <strong>kitni mehndi lag rahi hai</strong>: kam mehndi = kam rate,
+          zyada mehndi aur portrait/couple kaam = zyada rate.
+        </p>
+      </header>
+
+      <div class="table-wrap reveal" data-anim="fade">
+        <table class="pricetable">
+          <caption class="visually-hidden">Pooja Bridal Mehndi rate card, Indore</caption>
+          <thead>
+            <tr>
+              <th scope="col">Design</th>
+              <th scope="col">Coverage</th>
+              <th scope="col">Time</th>
+              <th scope="col">Rate</th>
+            </tr>
+          </thead>
+          <tbody id="rateTableBody"><!-- JS se bharega --></tbody>
+        </table>
+      </div>
+
+      <h3 class="ratecard__sub reveal">Add-ons (optional)</h3>
+      <div class="table-wrap reveal" data-anim="fade">
+        <table class="pricetable">
+          <caption class="visually-hidden">Add-on charges</caption>
+          <thead>
+            <tr>
+              <th scope="col">Add-on</th>
+              <th scope="col">Detail</th>
+              <th scope="col">Rate</th>
+            </tr>
+          </thead>
+          <tbody id="addonTableBody"><!-- JS se bharega --></tbody>
+        </table>
+      </div>
+
+      <p class="ratecard__note reveal">
+        Ye rates Indore ke market rate (bridal ₹3,100–₹5,100, portrait ₹2,000–₹5,100,
+        guest ₹200/hand) ko dhyan mein rakh kar rakhe gaye hain. Final rate design dekh kar
+        confirm hota hai.
+      </p>
+    </div>
+  </section>
 
   <!-- ============ RATE NOTE ============ -->
   <section class="section section--sand section--tight">
@@ -210,5 +261,7 @@
 
 <script src="assets/js/site-config.js"></script>
 <script src="assets/js/app.js"></script>
+<script src="assets/js/motion.js"></script>
+<script src="assets/js/ratecard.js"></script>
 </body>
 </html>
