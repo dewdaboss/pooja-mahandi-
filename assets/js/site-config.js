@@ -47,8 +47,15 @@ const SITE = {
   ],
 
   /* ---------- 3. CATEGORIES (kam mehndi → zyada mehndi) -----------------
-     Portfolio page isi order mein sections banata hai.
-     `level` = kitni mehndi lagti hai (1 = kam, 5 = poori bridal).
+     Price Indore ke market rate ke hisaab se set kiya gaya hai
+     (bridal ₹2,100–₹5,100, portrait ₹2,000–₹5,100, guest ₹200/hand,
+      groom ₹300–₹1,500 — wedding platforms + local artists se compare).
+
+     RULE: jitni kam mehndi, utna kam rate. Portrait/couple (dulha-dulhan
+     figure) mein mehnat zyada lagti hai, isliye woh premium tier hai.
+
+     `level` = kitni mehndi (1 = kam, 5 = poori bridal)
+     `base`  = calculator ke liye number (price se auto nikalta hai bhi)
      --------------------------------------------------------------------- */
   categories: [
     {
@@ -59,19 +66,21 @@ const SITE = {
       price: "₹200",
       time: "20–30 min",
       blurb:
-        "Sirf ek chhota mandala ya palm par halka motif — kam mehndi, jaldi ready. Pehli baar lagwane walon aur daily look ke liye best.",
-      points: ["Sirf palm ya wrist", "20–30 minute", "Office / college friendly"],
+        "Sirf palm par ek chhota mandala ya ek halka motif — sabse kam mehndi, sabse kam rate. Pehli baar lagwane walon aur daily look ke liye.",
+      points: ["1 haath, palm", "20–30 minute", "Office / college friendly"],
+      market: "Market: ₹150–₹400 per hand",
     },
     {
       slug: "floral",
       name: "Floral & Arabic",
-      tag: "Halka aur modern",
+      tag: "Halki aur modern",
       level: 2,
-      price: "₹500",
-      time: "40–60 min",
+      price: "₹400",
+      time: "30–45 min",
       blurb:
-        "Back of hand par floral vines, leaves aur bold Arabic touches — kam space mein sundar look. Ring function aur friend ke sangeet ke liye perfect.",
-      points: ["Back of hand + fingers", "Floral vines & Arabic fill", "40–60 minute"],
+        "Back of hand par floral vine, leaves aur bold Arabic trails — kam jagah, sundar look. Ring function aur casual functions ke liye.",
+      points: ["Back of hand + fingers", "Floral vines / Arabic fill", "30–45 minute"],
+      market: "Market: ₹300–₹800",
     },
     {
       slug: "festive",
@@ -81,8 +90,9 @@ const SITE = {
       price: "₹700",
       time: "45–70 min",
       blurb:
-        "Dono haathon par lotus ya mandala, kalai par band — Karwa Chauth, Teej aur pooja ke liye sabse pasandida design.",
+        "Dono haathon par lotus ya mandala, kalai par band — Karwa Chauth, Teej, Rakhi aur pooja ke liye sabse pasandida design.",
       points: ["Dono haath", "Lotus / mandala", "Kalai band included"],
+      market: "Market: ₹500–₹1,200 (both hands)",
     },
     {
       slug: "peacock",
@@ -92,56 +102,81 @@ const SITE = {
       price: "₹900",
       time: "1 ghanta",
       blurb:
-        "More (peacock), jhumka trails aur lotus motif — palm par ek bada, sundar design. Function aur reception ke liye.",
+        "Palm par ek bada more (peacock), jhumka trails ya lotus motif — detailing zyada, isliye thoda premium.",
       points: ["Peacock / jhumka motif", "Ek haath, palm bhar", "Finger tips included"],
+      market: "Market: ₹700–₹1,500",
     },
     {
       slug: "halfhand",
       name: "Half Hand",
       tag: "Aadha haath bhara",
       level: 3,
-      price: "₹1,200",
+      price: "₹1,300",
       time: "1–1.5 ghanta",
       blurb:
-        "Back of hand se kalai tak — aadha haath bhara hua design. Engagement aur mehndi function ke liye sabse popular.",
+        "Back of hand se kalai tak — aadha haath bhara hua. Engagement aur mehndi function ka sabse popular size.",
       points: ["Back of hand + wrist", "Aadha haath coverage", "Floral / mandala mix"],
+      market: "Market: ₹1,000–₹2,500",
     },
     {
       slug: "portrait",
       name: "Portrait & Couple",
-      tag: "Story wali mehndi",
+      tag: "Dulha–Dulhan figure",
       level: 4,
-      price: "₹2,000",
+      price: "₹2,500",
       time: "1.5–2.5 ghante",
       blurb:
-        "Dulha-dulhan ki figure, chhatri, kalash ya mandir ka frame — aapki kahani aapke haath par. Photo reference se banti hai.",
-      points: ["Dulha-dulhan / couple figure", "Frame & chhatri details", "Photo se custom"],
+        "Haath par dulha-dulhan ki figure, chhatri, kalash ya mandir ka frame — sabse zyada mehnat wala kaam, isliye premium rate. Aapki photo se custom banti hai.",
+      points: ["Dulha–dulhan / couple figure", "Aapki photo se custom", "Sangeet & engagement special"],
+      market: "Market: ₹2,000–₹5,100 (portrait artists)",
     },
     {
       slug: "bridal",
       name: "Bridal Full Hand",
       tag: "Poora haath bhara",
       level: 4,
-      price: "₹2,800",
+      price: "₹3,500",
       time: "2–3 ghante",
       blurb:
-        "Poora haath + kalai + forearm tak dense design — mandala, jaali, peacock aur elephant motifs. Dulhan ke haath ke liye.",
-      points: ["Front + back + forearm", "Dense traditional work", "Dulhan ki pehli pasand"],
+        "Dono haath + kalai + forearm tak dense design — mandala, jaali, peacock aur elephant motifs. Dulhan ke haath ke liye.",
+      points: ["Dono haath + forearm", "Dense traditional work", "Dulhan ki pehli pasand"],
+      market: "Market: ₹3,100–₹5,100 (Indore bridal)",
     },
     {
       slug: "bridal-package",
       name: "Bridal Package — Haath + Pair",
       tag: "Dulhan Special",
       level: 5,
-      price: "₹5,000",
+      price: "₹6,000",
       time: "3–4 ghante",
       blurb:
-        "Shaadi ke din ka complete look — bridal haath + dono pair ki mehndi, ek hi sitting mein. Trial design discussion WhatsApp par free.",
-      points: ["Bridal haath + pair", "Trial discussion free", "Guest mehndi add-on"],
+        "Shaadi ke din ka complete look — bridal haath + dono pair ki mehndi, ek hi sitting mein. Groom ki mehndi add-on ke roop mein.",
+      points: ["Bridal haath + pair", "Trial design discussion free", "Groom & guest mehndi add-on"],
+      market: "Market: ₹5,000–₹10,000 (hands + feet)",
       feature: true,
       noGallery: true,
     },
   ],
+
+  /* ---------- 3b. ADD-ONS (alag se add hote hain) ----------------------- */
+  addons: [
+    { name: "Groom / Dulha mehndi", price: 800, note: "Halki traditional design, 20–30 min", market: "Market: ₹300–₹1,500" },
+    { name: "Guest / family — per hand", price: 200, note: "Simple design, 10–15 min per hand", market: "Market: ₹150–₹300" },
+    { name: "Sirf pair (dono) mehndi", price: 1800, note: "Feet design, 45–60 min", market: "Market: ₹1,500–₹3,000" },
+    { name: "Name / date hidden in design", price: 300, note: "Design ke andar chhupa hua naam ya date", market: "Add-on" },
+    { name: "Group booking (10+ hands)", price: 150, note: "Per hand rate, ek hi jagah par", market: "Group discount" },
+  ],
+
+  /* ---------- 3c. PRICE ESTIMATOR SETTINGS ----------------------------- */
+  calculator: {
+    hands: [
+      { key: "one", label: "1 haath", mult: 1, hint: "Single hand" },
+      { key: "both", label: "Dono haath", mult: 1.7, hint: "Both hands" },
+      { key: "bothFeet", label: "Dono haath + pair", mult: 2.4, hint: "Hands + feet" },
+    ],
+    roundTo: 50,
+    rangePct: 0.12,
+  },
 
   /* ---------- 4. PORTFOLIO (28 designs) ---------------------------------
      Naya photo add karne ke liye ek entry copy karein.
@@ -228,14 +263,15 @@ const SITE = {
   /* ---------- 6. BOOKING FORM DROPDOWN -------------------------------- */
   serviceOptions: [
     "Simple & Minimal (₹200 se)",
-    "Floral & Arabic (₹500 se)",
+    "Floral & Arabic (₹400 se)",
     "Festive / Karwa Chauth (₹700 se)",
     "Peacock & Motif (₹900 se)",
-    "Half Hand (₹1,200 se)",
-    "Portrait & Couple (₹2,000 se)",
-    "Bridal Full Hand (₹2,800 se)",
-    "Bridal Package — haath + pair (₹5,000 se)",
-    "Guest / Family mehndi (group)",
+    "Half Hand (₹1,300 se)",
+    "Portrait & Couple — dulha-dulhan (₹2,500 se)",
+    "Bridal Full Hand (₹3,500 se)",
+    "Bridal Package — haath + pair (₹6,000 se)",
+    "Sirf Groom / Dulha mehndi (₹800)",
+    "Guest / Family mehndi (₹200 per hand)",
     "Kuch aur — puchhna hai",
   ],
 };

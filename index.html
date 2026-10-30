@@ -30,6 +30,7 @@
 <link rel="preload" as="image" href="assets/img/opt/hero-736.webp" media="(min-width: 520px) and (max-width: 899px)" />
 <link rel="preload" as="image" href="assets/img/opt/hero-480.webp" media="(max-width: 519px)" />
 <link rel="stylesheet" href="assets/css/style.css" />
+<link rel="stylesheet" href="assets/css/components.css" />
 
 <!-- Local business structured data (Google ke liye) -->
 <script type="application/ld+json">
@@ -56,6 +57,25 @@
     "opens": "09:00",
     "closes": "21:00"
   }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "OfferCatalog",
+  "name": "Pooja Bridal Mehndi — Rate Card (Indore)",
+  "itemListElement": [
+    { "@type": "Offer", "name": "Simple & Minimal Mehndi", "price": "200", "priceCurrency": "INR" },
+    { "@type": "Offer", "name": "Floral & Arabic Mehndi", "price": "400", "priceCurrency": "INR" },
+    { "@type": "Offer", "name": "Festive & Karwa Chauth Mehndi", "price": "700", "priceCurrency": "INR" },
+    { "@type": "Offer", "name": "Peacock & Motif Mehndi", "price": "900", "priceCurrency": "INR" },
+    { "@type": "Offer", "name": "Half Hand Mehndi", "price": "1300", "priceCurrency": "INR" },
+    { "@type": "Offer", "name": "Portrait & Couple Mehndi", "price": "2500", "priceCurrency": "INR" },
+    { "@type": "Offer", "name": "Bridal Full Hand Mehndi", "price": "3500", "priceCurrency": "INR" },
+    { "@type": "Offer", "name": "Bridal Package — Hands + Feet", "price": "6000", "priceCurrency": "INR" },
+    { "@type": "Offer", "name": "Groom Mehndi", "price": "800", "priceCurrency": "INR" },
+    { "@type": "Offer", "name": "Guest Mehndi (per hand)", "price": "200", "priceCurrency": "INR" }
+  ]
 }
 </script>
 </head>
@@ -90,7 +110,8 @@
 
     <nav class="nav" id="nav" aria-label="Main navigation">
       <a href="portfolio.html">Portfolio</a>
-      <a href="#services">Services &amp; Price</a>
+      <a href="#services">Price</a>
+      <a href="#estimate">Rate Calculator</a>
       <a href="#about">About</a>
       <a href="#reviews">Reviews</a>
       <a href="#faq">FAQ</a>
@@ -132,7 +153,7 @@
       </h1>
       <p class="hero__sub">
         Bridal, Arabic, minimal aur guest mehndi — aapke ghar par, poore Indore mein.
-        Design <strong>₹200 se</strong> shuru, ek WhatsApp message par.
+        Design <strong>₹200 se</strong> shuru — rate calculator se apna estimate 1 minute mein nikal lein.
       </p>
 
       <div class="hero__actions">
@@ -149,6 +170,10 @@
         <li>Bridal specialist</li>
       </ul>
     </div>
+
+    <span class="hero__ornament" aria-hidden="true">
+      <svg viewBox="0 0 240 240"><g fill="none" stroke="currentColor" stroke-width=".8"><circle cx="120" cy="120" r="116"/><circle cx="120" cy="120" r="96" stroke-dasharray="2 8"/><circle cx="120" cy="120" r="64"/><circle cx="120" cy="120" r="32" stroke-dasharray="3 6"/><path d="M120 40v160M40 120h160M63 63l114 114M177 63 63 177" opacity=".5"/></g></svg>
+    </span>
 
     <div class="hero__scroll" aria-hidden="true"><span></span> scroll</div>
   </section>
@@ -175,6 +200,11 @@
     </div>
   </section>
 
+  <!-- ================= DESIGN TICKER ================= -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__track" id="tickerTrack"></div>
+  </div>
+
   <!-- ================= SERVICES / PRICING ================= -->
   <!-- NOTE (Pooja di): Neeche ke PRICE aur TIME aap apne hisaab se badal sakti hain. -->
   <section class="section section--cream" id="services">
@@ -193,10 +223,82 @@
         <!-- JS se bharega (site-config.js → categories) -->
       </div>
 
+      <ul class="trustrow reveal" aria-label="Why these rates">
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.6 16.6-3.2-3.2 1.4-1.4 1.8 1.8 5.6-5.6 1.4 1.4-7 7Z"/></svg> Indore market rate ke hisaab se</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.6 16.6-3.2-3.2 1.4-1.4 1.8 1.8 5.6-5.6 1.4 1.4-7 7Z"/></svg> Ghar par service — koi extra charge nahi</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.6 16.6-3.2-3.2 1.4-1.4 1.8 1.8 5.6-5.6 1.4 1.4-7 7Z"/></svg> Group booking (10+ hands) par ₹150/hand</li>
+      </ul>
+
       <p class="cards__note reveal">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm1 15h-2v-6h2v6Zm0-8h-2V7h2v2Z"/></svg>
-        Group booking (mehndi party, sangeet, society function) ke liye special rate — WhatsApp par baat karein.
+        Portrait aur bridal designs mein mehnat zyada lagti hai, isliye woh premium tier mein hain —
+        aur groom/dulha mehndi alag add-on hai (₹800).
       </p>
+    </div>
+  </section>
+
+  <!-- ================= PRICE ESTIMATOR ================= -->
+  <section class="section section--wine estimator-section" id="estimate">
+    <span class="ornament ornament--spin" aria-hidden="true">
+      <svg viewBox="0 0 200 200"><g fill="none" stroke="currentColor" stroke-width="1"><circle cx="100" cy="100" r="96"/><circle cx="100" cy="100" r="78" stroke-dasharray="2 7"/><circle cx="100" cy="100" r="46"/><g id="petals"><path d="M100 54c9 14 15 23 15 30a15 15 0 0 1-30 0c0-7 6-16 15-30Z"/><path d="M100 146c-9-14-15-23-15-30a15 15 0 0 1 30 0c0 7-6 16-15 30Z"/><path d="M54 100c14-9 23-15 30-15a15 15 0 0 1 0 30c-7 0-16-6-30-15Z"/><path d="M146 100c-14 9-23 15-30 15a15 15 0 0 1 0-30c7 0 16 6 30 15Z"/></g></g></svg>
+    </span>
+
+    <div class="container estimator">
+      <div class="estimator__intro reveal" data-anim="left">
+        <p class="eyebrow eyebrow--light">Instant Estimate</p>
+        <h2 class="section__title section__title--light">Apna rate khud nikaliye</h2>
+        <p class="section__lede section__lede--light">
+          Design chunein, kitna haath bharna hai batayein — turant approximate rate dikh jayega.
+          Koi formality nahi, koi call nahi.
+        </p>
+        <ul class="estimator__list">
+          <li><span aria-hidden="true">✦</span> Rate mehndi ki matra par — kam mehndi, kam rate</li>
+          <li><span aria-hidden="true">✦</span> Portrait / couple design premium tier mein</li>
+          <li><span aria-hidden="true">✦</span> Groom aur guest mehndi add-on ke roop mein</li>
+        </ul>
+      </div>
+
+      <form class="estimator__box reveal" id="estimateForm" data-anim="right" novalidate>
+        <div class="field">
+          <label for="est-cat">Design category</label>
+          <select id="est-cat"></select>
+        </div>
+
+        <fieldset class="chips-field">
+          <legend>Kitna bharna hai?</legend>
+          <div class="chips" id="est-hands"></div>
+        </fieldset>
+
+        <fieldset class="chips-field">
+          <legend>Add-on chahiye? <span>(optional)</span></legend>
+          <div class="chips chips--wrap" id="est-addons"></div>
+        </fieldset>
+
+        <div class="estimate" aria-live="polite">
+          <p class="estimate__label">Approximate total</p>
+          <p class="estimate__value" id="est-value">₹200</p>
+          <p class="estimate__range"><span id="est-range">₹200 – ₹250</span></p>
+          <p class="estimate__meta"><span id="est-time">20–30 min</span> · <span id="est-cat-name">Simple &amp; Minimal</span></p>
+        </div>
+
+        <a class="btn btn--gold btn--block" id="est-cta" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.7-6.1c-.3-.1-1.7-.8-1.9-.9s-.4-.1-.6.1-.7.9-.9 1-.3.2-.5 0a6.7 6.7 0 0 1-2-1.2 7.5 7.5 0 0 1-1.4-1.7c-.1-.3 0-.4.1-.5l.5-.6c.1-.2.2-.3.3-.5s0-.4 0-.5-.7-1.6-.9-2.2-.4-.5-.6-.5h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5 5 0 0 0 1 2.6 11 11 0 0 0 4.3 3.8 10 10 0 0 0 1.4.5 3.4 3.4 0 0 0 1.6.1 2.7 2.7 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .2-1.2c-.1-.1-.3-.2-.6-.3Z"/></svg>
+          Ye rate WhatsApp par confirm karein
+        </a>
+        <p class="estimator__note">Approximate hai — final rate design dekh kar confirm hota hai.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ================= ADD-ONS ================= -->
+  <section class="section section--sand section--tight" id="addons">
+    <div class="container">
+      <header class="section__head section__head--center reveal">
+        <p class="eyebrow">Extras</p>
+        <h2 class="section__title">Saath mein ye bhi le sakte hain</h2>
+        <p class="section__lede">Bridal ke saath groom aur family ki mehndi — ek hi din, ek hi artist.</p>
+      </header>
+      <div class="addons" id="addonsList"><!-- JS se bharega --></div>
     </div>
   </section>
 
@@ -341,7 +443,7 @@
       <div class="faq">
         <details class="faq__item">
           <summary>Mehndi ka rate kitna hota hai?</summary>
-          <div class="faq__body"><p>Rate is baat par depend karta hai ki <strong>kitni mehndi lag rahi hai</strong>. Simple &amp; minimal ₹200 se, floral/Arabic ₹500 se, festive ₹700 se, peacock motif ₹900 se, half hand ₹1,200 se, portrait/couple ₹2,000 se, bridal full hand ₹2,800 se aur bridal package (haath + pair) ₹5,000 se. <a href="portfolio.html">Portfolio</a> dekh kar design ki photo bhejein — turant exact quote mil jayega.</p></div>
+          <div class="faq__body"><p>Rate is baat par depend karta hai ki <strong>kitni mehndi lag rahi hai</strong>. Simple &amp; minimal ₹200 se, floral/Arabic ₹400 se, festive ₹700 se, peacock motif ₹900 se, half hand ₹1,300 se, portrait/couple (dulha-dulhan figure) ₹2,500 se, bridal full hand ₹3,500 se aur bridal package (haath + pair) ₹6,000 se. Groom mehndi ₹800 aur guest mehndi ₹200 per hand. <a href="#estimate">Rate calculator</a> se apna approximate rate khud nikal sakte hain — ya <a href="portfolio.html">portfolio</a> dekh kar design ki photo bhejein.</p></div>
         </details>
         <details class="faq__item">
           <summary>Kya aap ghar par aakar mehndi lagati hain?</summary>
@@ -531,5 +633,6 @@
 
 <script src="assets/js/site-config.js"></script>
 <script src="assets/js/app.js"></script>
+<script src="assets/js/motion.js"></script>
 </body>
 </html>

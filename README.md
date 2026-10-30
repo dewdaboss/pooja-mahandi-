@@ -30,6 +30,9 @@ Deploy karna ho to GitHub Pages / Netlify / Vercel par yeh folder drag-drop kar 
 | `assets/css/style.css` | Poora design (mobile-first, tokens) |
 | `assets/js/site-config.js` | **Saara content** — number, categories, rate, photos, areas, reviews |
 | `assets/js/app.js` | Cards, filters, gallery, lightbox, WhatsApp links, booking form |
+| `assets/js/motion.js` | Rate calculator, add-ons, ticker, parallax, counters, back-to-top, tilt |
+| `assets/js/ratecard.js` | Portfolio page ka price table + add-on table |
+| `assets/css/components.css` | Ticker, estimator, add-ons, price table, back-to-top |
 | `assets/img/opt/` | Optimised (webp) photos — 360 / 480 / 736 px |
 | `assets/img/portfolio/` | Full-size (jpeg) originals |
 | `assets/img/incoming/` | Nayi raw photos yahan daalein |
@@ -37,26 +40,49 @@ Deploy karna ho to GitHub Pages / Netlify / Vercel par yeh folder drag-drop kar 
 
 ---
 
-## 3. Categories & rate (abhi site par yeh hai)
+## 3. Categories, rate & add-ons (abhi site par yeh hai)
 
-Rate ka rule: **jitni kam mehndi, utna kam rate.**
+Rate ka rule: **jitni kam mehndi, utna kam rate.** Portrait/couple (dulha–dulhan figure)
+mein mehnat sabse zyada lagti hai, isliye woh bridal se alag premium tier hai.
 
 | # | Category | Kitni mehndi | Rate | Time | Designs |
 | --- | --- | --- | --- | --- | --- |
 | 1 | Simple & Minimal | ●○○○○ | ₹200 se | 20–30 min | 3 |
-| 2 | Floral & Arabic | ●●○○○ | ₹500 se | 40–60 min | 4 |
+| 2 | Floral & Arabic | ●●○○○ | ₹400 se | 30–45 min | 4 |
 | 3 | Festive & Karwa Chauth | ●●○○○ | ₹700 se | 45–70 min | 4 |
 | 4 | Peacock & Motif | ●●●○○ | ₹900 se | 1 ghanta | 3 |
-| 5 | Half Hand | ●●●○○ | ₹1,200 se | 1–1.5 ghanta | 2 |
-| 6 | Portrait & Couple | ●●●●○ | ₹2,000 se | 1.5–2.5 ghante | 4 |
-| 7 | Bridal Full Hand | ●●●●○ | ₹2,800 se | 2–3 ghante | 8 |
-| 8 | Bridal Package (haath + pair) | ●●●●● | ₹5,000 se | 3–4 ghante | — |
+| 5 | Half Hand | ●●●○○ | ₹1,300 se | 1–1.5 ghanta | 2 |
+| 6 | **Portrait & Couple** (dulha–dulhan) | ●●●●○ | **₹2,500 se** | 1.5–2.5 ghante | 4 |
+| 7 | Bridal Full Hand | ●●●●○ | ₹3,500 se | 2–3 ghante | 8 |
+| 8 | Bridal Package (haath + pair) | ●●●●● | ₹6,000 se | 3–4 ghante | — |
 
-**Total 28 designs.** Level dots (`level: 1–5` in config) ka matlab hai kitna haath bharna hai —
-wahi dots site par dikhte hain, isliye client ko rate ka logic khud samajh aa jaata hai.
+**Add-ons:** Groom/dulha mehndi ₹800 · Guest (per hand) ₹200 · Sirf pair ₹1,800 ·
+Name/date design mein ₹300 · Group booking (10+ hands) ₹150/hand
 
-⚠️ Rate **suggestion** hain — Pooja di final rate confirm karein. Sirf `site-config.js` ke
-`categories` mein `price` badalna hai; cards, portfolio, WhatsApp message sab update ho jayenge.
+### Ye rates kaise set kiye (market research)
+
+Indore aur India ke wedding platforms par live rates compare karne ke baad:
+
+| Source | Data |
+| --- | --- |
+| WedMeGood Indore | Bridal ₹2,100 – ₹5,100 typical (range ₹1,500 – ₹15,000) |
+| WeddingBazaar Indore | Artists ₹2,100 / ₹3,100 / ₹4,000 / ₹5,000 / ₹5,100 |
+| IndiaMART Indore | Arabic ₹300/pair · bridal ₹2,500/piece · guest ₹500/person |
+| Wedding platforms (pan-India) | Portrait mehndi artists ₹2,000 – ₹5,100 |
+| Price guides | Guest per hand ₹100–₹500 · Arabic ₹150–₹800 · Groom ₹300–₹1,500 |
+| Dream Wedding Hub | Couple portrait + full hand ₹10,000 – ₹20,000 (metro) |
+
+Isliye Pooja ke rates market ke **lower-middle band** mein rakhe gaye hain (naye artist ke liye
+competitive), par portrait/bridal tiers premium — kyunki wahan kaam sabse zyada hota hai.
+
+⚠️ Rate **suggestion** hain — Pooja di final rate confirm karein. Sirf
+`site-config.js` ke `categories` / `addons` mein `price` badalna hai; cards, portfolio,
+rate calculator, WhatsApp message aur rate card table — sab update ho jayenge.
+
+### Naya feature: Rate Calculator
+Home page par `#estimate` section — client design category, coverage (1 haath / dono haath /
+haath+pair) aur add-ons chun kar turant approximate rate dekh sakta hai, aur wahi details
+WhatsApp message mein chali jaati hain. Multipliers `site-config.js → calculator` mein hain.
 
 ## 4. Roz-marra ke badlav (cheat sheet)
 
