@@ -1,0 +1,667 @@
+/* =========================================================================
+   POOJA BRIDAL MEHNDI — mobile.css
+   Mobile-first "app jaisa" experience. Desktop par minimum changes.
+   ========================================================================= */
+
+/* =========================================================================
+   1. APP BOTTOM BAR
+   ========================================================================= */
+.appbar {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 80;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: end;
+  gap: 2px;
+  padding: 6px 6px calc(6px + env(safe-area-inset-bottom));
+  background: rgba(253, 250, 242, 0.97);
+  backdrop-filter: blur(14px);
+  border-top: 1px solid rgba(200, 164, 92, 0.35);
+  box-shadow: 0 -10px 30px -18px rgba(42, 23, 16, 0.5);
+}
+.appbar__item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  height: 52px;
+  border-radius: 14px;
+  color: var(--ink-soft);
+  font-size: 9.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: color 0.2s, background 0.2s, transform 0.2s var(--ease);
+}
+.appbar__item svg { width: 21px; height: 21px; fill: currentColor; transition: transform 0.25s var(--ease); }
+.appbar__item:active { transform: scale(0.94); }
+.appbar__item.is-active { color: var(--wine-800); font-weight: 500; }
+.appbar__item.is-active::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  width: 16px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--gold-soft), var(--gold-deep));
+}
+
+/* centre WhatsApp bubble */
+.appbar__item--center { justify-content: flex-end; gap: 4px; }
+.appbar__bubble {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  margin-top: -26px;
+  border-radius: 50%;
+  background: linear-gradient(150deg, #25d366, #128c4b);
+  color: #fff;
+  border: 3px solid var(--cream-2);
+  box-shadow: 0 10px 24px -8px rgba(18, 140, 75, 0.7);
+  transition: transform 0.25s var(--ease);
+}
+.appbar__bubble svg { width: 26px; height: 26px; }
+.appbar__item--center:active .appbar__bubble { transform: scale(0.92); }
+.appbar__item--center .appbar__label {
+  font-size: 9.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #128c4b;
+  font-weight: 500;
+}
+.appbar__bubble::after {
+  content: "";
+  position: absolute;
+  width: 54px;
+  height: 54px;
+  margin-top: -26px;
+  border-radius: 50%;
+  animation: appbarPulse 2.8s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes appbarPulse {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.45); }
+  70% { box-shadow: 0 0 0 16px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+/* page ko bar ke liye jagah */
+body { padding-bottom: calc(74px + env(safe-area-inset-bottom)); }
+
+/* purana bar chhupa do */
+.mobilebar { display: none !important; }
+
+/* =========================================================================
+   2. HERO — mobile compact + quick actions
+   ========================================================================= */
+.hero__quick {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  margin: 22px -20px 0;
+  padding: 4px 20px 6px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.hero__quick::-webkit-scrollbar { display: none; }
+.quick {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 15px;
+  border-radius: 999px;
+  border: 1px solid rgba(224, 196, 147, 0.55);
+  background: rgba(247, 239, 223, 0.1);
+  backdrop-filter: blur(6px);
+  color: var(--cream);
+  font-size: 12.5px;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  transition: background 0.2s, transform 0.2s var(--ease);
+}
+.quick:active { transform: scale(0.96); background: rgba(224, 196, 147, 0.25); }
+.quick:first-child {
+  background: linear-gradient(135deg, var(--gold-soft), var(--gold-deep));
+  border-color: transparent;
+  color: #2b1a08;
+  font-weight: 600;
+}
+.quick__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #1faa59;
+  box-shadow: 0 0 0 3px rgba(31, 170, 89, 0.25);
+}
+
+.hero__swipe {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  justify-content: center;
+  margin-top: 18px;
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(247, 239, 223, 0.6);
+}
+.hero__swipe-hand {
+  display: inline-block;
+  font-size: 15px;
+  animation: swipeHint 2.6s var(--ease) infinite;
+}
+@keyframes swipeHint {
+  0%, 100% { transform: translateX(-6px) rotate(-8deg); }
+  50% { transform: translateX(6px) rotate(8deg); }
+}
+
+/* hero compact type on small screens */
+@media (max-width: 899px) {
+  .hero {
+    min-height: calc(100svh - var(--header-h) - 42px);
+    padding-top: 56px;
+    padding-bottom: 34px;
+    align-items: flex-end;
+  }
+  .hero__title { font-size: clamp(2.05rem, 8.6vw, 2.7rem); }
+  .hero__sub { font-size: 14.5px; margin-top: 14px; }
+  .hero__actions { margin-top: 20px; gap: 9px; }
+  .hero__actions .btn { padding: 14px 20px; font-size: 14px; }
+  .hero__actions .btn--ghost { flex-basis: 100%; }
+  .hero__chips { display: none; }
+  .hero__ornament { width: 320px; height: 320px; right: -30%; opacity: 0.55; }
+}
+
+/* =========================================================================
+   3. SWIPE CAROUSELS (mobile)
+   ========================================================================= */
+@media (max-width: 899px) {
+  /* price cards -> snap carousel with peek */
+  .cards {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin: 0 -20px;
+    padding: 4px 20px 14px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .cards::-webkit-scrollbar { display: none; }
+  .cards .card {
+    flex: 0 0 78%;
+    scroll-snap-align: center;
+    padding: 22px 18px 18px;
+  }
+  .cards .card__title { font-size: 21px; }
+  .cards .card__desc { font-size: 13.5px; }
+
+  /* add-ons -> snap carousel */
+  .addons {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin: 0 -20px;
+    padding: 4px 20px 12px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .addons::-webkit-scrollbar { display: none; }
+  .addons .addon { flex: 0 0 72%; scroll-snap-align: center; }
+
+  /* index gallery -> horizontal filmstrip */
+  .gallery {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin: 0 -20px;
+    padding: 2px 20px 12px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .gallery::-webkit-scrollbar { display: none; }
+  .gallery .gcard {
+    flex: 0 0 62%;
+    scroll-snap-align: center;
+    aspect-ratio: 3 / 4;
+    grid-column: auto !important;
+    grid-row: auto !important;
+    border-radius: 16px;
+  }
+
+  /* portfolio page galleries */
+  .pgallery {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin: 0 -20px;
+    padding: 2px 20px 12px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .pgallery::-webkit-scrollbar { display: none; }
+  .pgallery .gcard { flex: 0 0 62%; scroll-snap-align: center; aspect-ratio: 3 / 4; border-radius: 16px; }
+}
+
+/* carousel progress dots (JS inject karta hai) */
+.cdots {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 4px;
+}
+.cdots__dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(106, 85, 70, 0.25);
+  transition: width 0.3s var(--ease), background 0.3s;
+}
+.cdots__dot.is-on {
+  width: 16px;
+  border-radius: 3px;
+  background: var(--gold-deep);
+}
+.section--wine .cdots__dot { background: rgba(247, 239, 223, 0.25); }
+.section--wine .cdots__dot.is-on { background: var(--gold-soft); }
+
+/* swipe hint pill above carousels */
+.swipehint {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 auto 12px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(200, 164, 92, 0.14);
+  border: 1px dashed rgba(166, 124, 52, 0.4);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.section--wine .swipehint {
+  background: rgba(247, 239, 223, 0.08);
+  border-color: rgba(224, 196, 147, 0.35);
+  color: rgba(247, 239, 223, 0.7);
+}
+.swipehint span { animation: swipeHint 2.6s ease infinite; display: inline-block; }
+.swipehint-wrap { display: flex; justify-content: center; }
+
+/* =========================================================================
+   4. BOTTOM SHEET (mobile lightbox)
+   ========================================================================= */
+.sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 130;
+  display: flex;
+  align-items: flex-end;
+  background: rgba(20, 4, 8, 0);
+  transition: background 0.3s var(--ease);
+  touch-action: pan-y;
+}
+.sheet[hidden] { display: none; }
+body.is-locked { overflow: hidden; }
+.sheet.is-open { background: rgba(20, 4, 8, 0.62); backdrop-filter: blur(4px); }
+.sheet__panel {
+  position: relative;
+  width: 100%;
+  max-height: 92dvh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--cream-2);
+  border-radius: 22px 22px 0 0;
+  padding: 8px 16px calc(18px + env(safe-area-inset-bottom));
+  transform: translateY(100%);
+  transition: transform 0.38s var(--ease);
+  display: grid;
+  gap: 12px;
+  box-shadow: 0 -20px 60px -20px rgba(0, 0, 0, 0.7);
+}
+.sheet.is-open .sheet__panel { transform: translateY(0); }
+.sheet__grab {
+  width: 42px;
+  height: 4px;
+  border-radius: 4px;
+  background: rgba(106, 85, 70, 0.28);
+  margin: 4px auto 2px;
+}
+.sheet__figure {
+  margin: 0;
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--wine-900);
+}
+.sheet__figure img {
+  width: 100%;
+  max-height: 46dvh;
+  object-fit: contain;
+  display: block;
+}
+.sheet__badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: rgba(35, 6, 12, 0.72);
+  color: var(--gold-soft);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.sheet__title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  line-height: 1.2;
+  color: var(--wine-800);
+  margin: 0;
+}
+.sheet__meta { margin: 0; font-size: 12.5px; color: var(--ink-soft); }
+.sheet__actions { display: grid; gap: 8px; }
+.sheet__actions .btn { padding: 13px 18px; font-size: 14px; }
+.sheet__nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.sheet__navbtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: #fff;
+  font-size: 12.5px;
+  color: var(--wine-800);
+}
+.sheet__navbtn svg { width: 16px; height: 16px; fill: currentColor; }
+.sheet__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(35, 6, 12, 0.6);
+  color: #fff;
+  z-index: 2;
+}
+.sheet__close svg { width: 18px; height: 18px; fill: currentColor; }
+
+/* =========================================================================
+   5. QUIZ
+   ========================================================================= */
+.quiz {
+  max-width: 520px;
+  margin-inline: auto;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 20px 18px 22px;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+.quiz__bar {
+  height: 3px;
+  border-radius: 3px;
+  background: rgba(106, 85, 70, 0.12);
+  overflow: hidden;
+  margin-bottom: 18px;
+}
+.quiz__bar-fill {
+  display: block;
+  height: 100%;
+  width: 0;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--gold-soft), var(--gold-deep));
+  transition: width 0.45s var(--ease);
+}
+.quiz__step {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  margin: 0 0 8px;
+}
+.quiz__q {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 5.4vw, 1.9rem);
+  color: var(--wine-800);
+  margin: 0 0 16px;
+  line-height: 1.2;
+}
+.quiz__options { display: grid; gap: 9px; }
+.quiz__opt {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: var(--cream-2);
+  text-align: left;
+  font-size: 14.5px;
+  color: var(--ink);
+  transition: transform 0.2s var(--ease), border-color 0.2s, background 0.2s, box-shadow 0.2s;
+}
+.quiz__opt:hover { border-color: var(--gold); background: #fff; }
+.quiz__opt:active { transform: scale(0.985); }
+.quiz__opt.is-picked {
+  border-color: var(--gold-deep);
+  background: linear-gradient(135deg, rgba(224, 196, 147, 0.35), rgba(200, 164, 92, 0.18));
+  box-shadow: 0 8px 20px -12px rgba(166, 124, 52, 0.8);
+}
+.quiz__opt-icon {
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: rgba(200, 164, 92, 0.18);
+  color: var(--wine-800);
+  font-size: 16px;
+}
+.quiz__opt-text { display: flex; flex-direction: column; gap: 1px; }
+.quiz__opt-text small { font-size: 11.5px; color: var(--ink-soft); }
+
+.quiz__result { text-align: center; display: grid; gap: 8px; animation: quizIn 0.45s var(--ease) both; }
+.quiz__result-label {
+  margin: 0;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+}
+.quiz__result-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 6vw, 2rem);
+  color: var(--wine-800);
+  margin: 0;
+}
+.quiz__result-price {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 600;
+  color: var(--gold-deep);
+  line-height: 1.1;
+}
+.quiz__result-meta { margin: 0; font-size: 13px; color: var(--ink-soft); }
+.level--center { justify-content: center; }
+.quiz__actions { display: grid; gap: 6px; margin-top: 12px; }
+.quiz__again { font-size: 13px; justify-self: center; }
+@keyframes quizIn {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+
+/* =========================================================================
+   6. MEHNDI LINE-ART DRAW SECTION
+   ========================================================================= */
+.drawsection {
+  position: relative;
+  padding: 52px 0;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(200, 164, 92, 0.14), transparent 62%),
+    var(--wine-950);
+  color: var(--cream);
+  overflow: hidden;
+}
+.drawsection__inner { display: grid; gap: 26px; align-items: center; }
+.drawsection__art {
+  position: relative;
+  width: min(74vw, 300px);
+  margin-inline: auto;
+  color: var(--gold-soft);
+}
+.drawart { width: 100%; height: auto; overflow: visible; }
+.drawart .dl {
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+  opacity: 0.25;
+  transition: stroke-dashoffset 2.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s;
+}
+.drawsection.is-drawn .drawart .dl {
+  stroke-dashoffset: 0;
+  opacity: 0.92;
+}
+.drawsection.is-drawn .drawart .dl:nth-child(2n) { transition-delay: 0.18s; }
+.drawsection.is-drawn .drawart .dl:nth-child(3n) { transition-delay: 0.32s; }
+.drawsection.is-drawn .drawart .dl:nth-child(4n) { transition-delay: 0.46s; }
+.drawsection__meta {
+  display: grid;
+  gap: 12px;
+  margin-top: 22px;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+}
+.drawsection__meta li {
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(247, 239, 223, 0.06);
+  border: 1px solid rgba(224, 196, 147, 0.22);
+}
+.drawsection__meta strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 17px;
+  color: var(--gold-soft);
+  font-weight: 500;
+}
+.drawsection__meta span { font-size: 11px; color: rgba(247, 239, 223, 0.62); }
+.drawsection .section__title { color: #fff; }
+
+/* =========================================================================
+   7. TAP RIPPLE (henna drop)
+   ========================================================================= */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(200, 164, 92, 0.55), rgba(166, 124, 52, 0) 70%);
+  transform: scale(0);
+  animation: rippleOut 0.6s ease-out forwards;
+  z-index: 0;
+}
+@keyframes rippleOut {
+  to { transform: scale(1); opacity: 0; }
+}
+.tapable { position: relative; overflow: hidden; }
+
+/* =========================================================================
+   8. MOBILE TYPOGRAPHY / SPACING POLISH (desktop-feel hatao)
+   ========================================================================= */
+@media (max-width: 899px) {
+  .section { padding-block: 46px; }
+  .section--tight { padding-block: 38px; }
+  .section__head { margin-bottom: 24px; }
+  .section__title { font-size: clamp(1.75rem, 7.2vw, 2.2rem); }
+  .section__title::after { margin-top: 14px; width: 46px; }
+  .section__lede { font-size: 14.5px; }
+
+  .card { border-radius: 18px; }
+  .band { padding: 48px 0; }
+  .steps { gap: 10px; }
+  .step { padding: 22px 18px; }
+  .step__num { font-size: 32px; }
+  .about { gap: 30px; }
+  .about__figure img { aspect-ratio: 4 / 3; border-radius: 18px; }
+  .bookform { border-radius: 18px; }
+  .ratenote { border-radius: 18px; }
+  .faq__item summary { font-size: 14.5px; padding: 15px 42px 15px 16px; }
+  .areas li { font-size: 12px; padding: 7px 12px; }
+  .finale { padding: 52px 0; }
+  .footer { padding: 34px 0 22px; }
+}
+
+/* sticky category chips on portfolio — app style */
+@media (max-width: 899px) {
+  .jump {
+    padding: 10px 16px;
+    gap: 7px;
+    top: var(--header-h);
+  }
+  .jump__link { font-size: 11.5px; padding: 8px 13px; }
+  .psection { padding: 36px 0 30px; }
+  .psection__head { grid-template-columns: auto 1fr; gap: 10px 14px; }
+  .psection__meta {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    border: 0;
+    padding: 12px 0 0;
+    border-top: 1px dashed var(--line);
+  }
+  .psection__price { font-size: 26px; }
+  .psection__time { font-size: 11px; }
+}
+
+/* header compact */
+@media (max-width: 899px) {
+  :root { --header-h: 58px; }
+  .brand__mark { width: 34px; height: 34px; }
+  .brand__name { font-size: 21px; }
+  .brand__sub { font-size: 8px; }
+  .header__wa { display: none; }
+  .topbar { font-size: 9.5px; padding: 6px 0; }
+  .topbar__text { gap: 5px; }
+}
+
+/* =========================================================================
+   9. DESKTOP — app bar hatao, baaki same
+   ========================================================================= */
+@media (min-width: 900px) {
+  .appbar { display: none; }
+  .hero__quick { display: none; }
+  .hero__swipe { display: none; }
+  .cdots, .swipehint-wrap { display: none; }
+  .sheet { display: none !important; }
+  .quiz { max-width: 620px; padding: 30px 28px; }
+  .drawsection { padding: 96px 0; }
+  .drawsection__inner { grid-template-columns: 0.9fr 1.1fr; gap: 64px; }
+  .drawsection__art { width: 100%; }
+  .drawsection__meta { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .appbar__bubble::after { animation: none; }
+  .hero__swipe-hand, .swipehint span { animation: none; }
+  .drawart .dl { transition: none; stroke-dashoffset: 0; opacity: 0.9; }
+}
