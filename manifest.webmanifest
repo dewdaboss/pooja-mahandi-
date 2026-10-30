@@ -1,0 +1,35 @@
+{
+  "name": "Pooja Bridal Mehndi \u2014 Indore",
+  "short_name": "Pooja Mehndi",
+  "description": "Bridal, Arabic aur minimal mehndi artist in Indore. Ghar par service, \u20b9200 se shuru.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f7efdf",
+  "theme_color": "#310a12",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}
