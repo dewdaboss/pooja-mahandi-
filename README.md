@@ -5,7 +5,7 @@ Mobile-first portfolio + booking website for **Pooja Bridal Mehndi** (mehndi art
 category-wise with rates).
 
 🔗 Instagram: [@pooja_bridal_mehndi._](https://www.instagram.com/pooja_bridal_mehndi._)
-📞 WhatsApp / Call: +91 97555 50380
+📞 WhatsApp / Call: +91 97555 50240
 
 ---
 
@@ -32,6 +32,8 @@ Deploy karna ho to GitHub Pages / Netlify / Vercel par yeh folder drag-drop kar 
 | `assets/js/app.js` | Cards, filters, gallery, lightbox, WhatsApp links, booking form |
 | `assets/js/motion.js` | Rate calculator, add-ons, ticker, parallax, counters, back-to-top, tilt |
 | `assets/js/ratecard.js` | Portfolio page ka price table + add-on table |
+| `assets/css/mobile.css` | **Mobile app layer** — app bar, swipe carousels, bottom sheet, quiz, drawing |
+| `assets/js/mobile.js` | **Mobile app logic** — quiz, bottom sheet, swipe dots, ripple, draw-on-scroll |
 | `assets/css/components.css` | Ticker, estimator, add-ons, price table, back-to-top |
 | `assets/img/opt/` | Optimised (webp) photos — 360 / 480 / 736 px |
 | `assets/img/portfolio/` | Full-size (jpeg) originals |
@@ -88,7 +90,7 @@ WhatsApp message mein chali jaati hain. Multipliers `site-config.js → calculat
 
 ### WhatsApp number / Instagram
 `assets/js/site-config.js` → `whatsapp`, `phoneDisplay`, `instagramUrl`.
-Number format: `919755550380` (bina `+`, bina space).
+Number format: `919755550240` (bina `+`, bina space).
 
 ### Rate badalna
 `site-config.js` → `categories` → us category ka `price`.
@@ -138,7 +140,7 @@ Seedha `index.html` mein edit karein.
 
 ## 5. Photos ke baare mein note
 
-Abhi portfolio mein 18 designs hain (minimal → rajwadi). Yeh images aapne
+Abhi portfolio mein 28 designs hain (minimal → rajwadi). Yeh images aapne
 Instagram/Pinterest se reference ke liye di hain. **Publish se pehle** confirm kar lein
 ki ye designs Pooja di ke apne kaam ke hain (ya unki banayi hui photos se replace kar dein) —
 portfolio ki asli value unke apne kaam se hi aati hai. Replace karte waqt file ke naam wahi
@@ -150,7 +152,14 @@ rakhein, ya `site-config.js` mein path badal dein.
 
 - Zero dependencies, zero build. Sirf Google Fonts (Cormorant Garamond + Jost).
 - Mobile-first CSS, `svh/dvh`, safe-area insets (iPhone notch), reduced-motion support.
-- Mobile: sticky bottom bar (Call / WhatsApp / Instagram). Desktop: floating WhatsApp + split hero.
+- Mobile: 5-slot **app bar** (Home / Designs / WhatsApp-Book / Rate / Call). Desktop: floating WhatsApp + split hero.
+- Mobile-first "app jaisa" layer (`mobile.css` + `mobile.js`, sab `<900px` par hi chalta hai):
+  - **Swipe carousels** — price cards, add-ons, gallery sab side-swipe (snap), neeche progress dots.
+  - **Bottom sheet** — design par tap karein → photo + category + rate + WhatsApp, swipe down se band, swipe left/right se agla/pichhla.
+  - **Design Match Quiz** (`#match`) — 3 sawaal → sahi category + rate + prefilled WhatsApp message.
+  - **Draw-on-scroll mehndi line art** (`.drawsection`) — 16 strokes ek-ek karke "khichte" hain.
+  - **Tap ripple** (mehndi drop), chhota haptic vibrate, active app-bar item.
+  - Desktop par yeh app UI poori tarah hidden — site waise hi professional dikhti hai.
 - Gallery: category filter, lightbox (keyboard arrows, swipe), per-category navigation.
 - Booking form → prefilled WhatsApp message (koi server, koi data store nahi).
 - SEO: meta + Open Graph, `BeautySalon` JSON-LD, semantic headings, alt text, sitemap.

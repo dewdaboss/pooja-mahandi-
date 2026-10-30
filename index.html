@@ -31,6 +31,7 @@
 <link rel="preload" as="image" href="assets/img/opt/hero-480.webp" media="(max-width: 519px)" />
 <link rel="stylesheet" href="assets/css/style.css" />
 <link rel="stylesheet" href="assets/css/components.css" />
+<link rel="stylesheet" href="assets/css/mobile.css" />
 
 <!-- Local business structured data (Google ke liye) -->
 <script type="application/ld+json">
@@ -41,7 +42,7 @@
   "alternateName": "Pooja Mehndi Artist Indore",
   "description": "Bridal, Arabic, minimal aur guest mehndi in Indore. Home service available. Designs starting from ₹200.",
   "image": "assets/img/og-cover.jpg",
-  "telephone": "+919755550380",
+  "telephone": "+919755550240",
   "priceRange": "₹200+",
   "areaServed": { "@type": "City", "name": "Indore" },
   "address": {
@@ -89,9 +90,9 @@
     <span class="dot" aria-hidden="true"></span>
     Indore <span class="sep">•</span> Ghar par mehndi service <span class="sep">•</span> Shuruaat <strong>₹200</strong> se
   </p>
-  <a class="topbar__call" href="tel:+919755550380" data-call>
+  <a class="topbar__call" href="tel:+919755550240" data-call>
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
-    <span>+91&nbsp;97555&nbsp;50380</span>
+    <span>+91&nbsp;97555&nbsp;50240</span>
   </a>
 </div>
 
@@ -164,6 +165,13 @@
         <a class="btn btn--ghost" href="portfolio.html">Portfolio dekhein</a>
       </div>
 
+      <div class="hero__quick" role="group" aria-label="Quick actions">
+        <a class="quick" href="#services"><span class="quick__dot" aria-hidden="true"></span>₹200 se</a>
+        <a class="quick" href="portfolio.html">Designs</a>
+        <a class="quick" href="#estimate">Rate nikalein</a>
+        <a class="quick" href="#book">Book</a>
+      </div>
+
       <ul class="hero__chips">
         <li>Natural henna</li>
         <li>Home service</li>
@@ -174,6 +182,10 @@
     <span class="hero__ornament" aria-hidden="true">
       <svg viewBox="0 0 240 240"><g fill="none" stroke="currentColor" stroke-width=".8"><circle cx="120" cy="120" r="116"/><circle cx="120" cy="120" r="96" stroke-dasharray="2 8"/><circle cx="120" cy="120" r="64"/><circle cx="120" cy="120" r="32" stroke-dasharray="3 6"/><path d="M120 40v160M40 120h160M63 63l114 114M177 63 63 177" opacity=".5"/></g></svg>
     </span>
+
+    <div class="hero__swipe" aria-hidden="true">
+      <span class="hero__swipe-hand">✋</span> swipe karein
+    </div>
 
     <div class="hero__scroll" aria-hidden="true"><span></span> scroll</div>
   </section>
@@ -258,7 +270,7 @@
         </ul>
       </div>
 
-      <form class="estimator__box reveal" id="estimateForm" data-anim="right" novalidate>
+      <div class="estimator__box reveal" id="estimateForm" data-anim="right">
         <div class="field">
           <label for="est-cat">Design category</label>
           <select id="est-cat"></select>
@@ -286,7 +298,7 @@
           Ye rate WhatsApp par confirm karein
         </a>
         <p class="estimator__note">Approximate hai — final rate design dekh kar confirm hota hai.</p>
-      </form>
+      </div>
     </div>
   </section>
 
@@ -334,6 +346,45 @@
     </div>
   </section>
 
+  <!-- ================= DESIGN MATCH QUIZ ================= -->
+  <section class="section section--sand quizsection" id="match">
+    <div class="container">
+      <header class="section__head section__head--center reveal">
+        <p class="eyebrow">60-Second Match</p>
+        <h2 class="section__title">Kaunsa design aapke liye?</h2>
+        <p class="section__lede">
+          Teen chhote sawaal — hum aapke liye best design aur uska rate bata denge.
+        </p>
+      </header>
+
+      <div class="quiz" id="quiz">
+        <div class="quiz__bar"><span class="quiz__bar-fill" id="quizFill"></span></div>
+
+        <div class="quiz__stage" id="quizStage">
+          <!-- questions JS se aate hain -->
+        </div>
+
+        <div class="quiz__result" id="quizResult" hidden>
+          <p class="quiz__result-label">Aapke liye best match</p>
+          <h3 class="quiz__result-title" id="quizTitle">Simple &amp; Minimal</h3>
+          <p class="quiz__result-price" id="quizPrice">₹200 se</p>
+          <p class="quiz__result-meta" id="quizMeta"></p>
+          <p class="level level--center">
+            <span class="level__label">Kitni mehndi:</span>
+            <span class="level__dots" id="quizDots" aria-hidden="true"></span>
+          </p>
+          <div class="quiz__actions">
+            <a class="btn btn--whatsapp btn--block" id="quizCta" href="#" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.7-6.1c-.3-.1-1.7-.8-1.9-.9s-.4-.1-.6.1-.7.9-.9 1-.3.2-.5 0a6.7 6.7 0 0 1-2-1.2 7.5 7.5 0 0 1-1.4-1.7c-.1-.3 0-.4.1-.5l.5-.6c.1-.2.2-.3.3-.5s0-.4 0-.5-.7-1.6-.9-2.2-.4-.5-.6-.5h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5 5 0 0 0 1 2.6 11 11 0 0 0 4.3 3.8 10 10 0 0 0 1.4.5 3.4 3.4 0 0 0 1.6.1 2.7 2.7 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .2-1.2c-.1-.1-.3-.2-.6-.3Z"/></svg>
+              Is design ka rate puchhein
+            </a>
+            <button type="button" class="btn btn--text quiz__again" id="quizAgain">Phir se try karein</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ================= BRIDAL BAND ================= -->
   <section class="band" aria-label="Bridal package highlight">
     <div class="band__ornament" aria-hidden="true">
@@ -349,6 +400,48 @@
         <li><span aria-hidden="true">✦</span> Bridal dates 2–4 hafte pehle book karein</li>
       </ul>
       <a class="btn btn--gold" href="#" data-wa="bridal">Bridal availability check karein</a>
+    </div>
+  </section>
+
+  <!-- ================= MEHNDI LINE ART (draws on scroll) ================= -->
+  <section class="drawsection" aria-labelledby="drawTitle">
+    <div class="container drawsection__inner">
+      <div class="drawsection__art" aria-hidden="true">
+        <svg viewBox="0 0 240 240" class="drawart" id="drawArt">
+          <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <circle class="dl" cx="120" cy="120" r="86" stroke-width="1.4"/>
+            <circle class="dl" cx="120" cy="120" r="66" stroke-width="1" stroke-dasharray="3 6"/>
+            <circle class="dl" cx="120" cy="120" r="34" stroke-width="1.2"/>
+            <circle class="dl" cx="120" cy="120" r="8" stroke-width="1.4"/>
+            <path class="dl" d="M120 34c7 12 11 19 11 25a11 11 0 0 1-22 0c0-6 4-13 11-25Z" stroke-width="1.3"/>
+            <path class="dl" d="M120 206c-7-12-11-19-11-25a11 11 0 0 1 22 0c0 6-4 13-11 25Z" stroke-width="1.3"/>
+            <path class="dl" d="M34 120c12-7 19-11 25-11a11 11 0 0 1 0 22c-6 0-13-4-25-11Z" stroke-width="1.3"/>
+            <path class="dl" d="M206 120c-12 7-19 11-25 11a11 11 0 0 1 0-22c6 0 13 4 25 11Z" stroke-width="1.3"/>
+            <path class="dl" d="M63 63c11 4 17 7 21 11a9 9 0 0 1-13 13c-4-4-7-10-8-24Z" stroke-width="1.1"/>
+            <path class="dl" d="M177 63c-11 4-17 7-21 11a9 9 0 0 0 13 13c4-4 7-10 8-24Z" stroke-width="1.1"/>
+            <path class="dl" d="M63 177c11-4 17-7 21-11a9 9 0 0 0-13-13c-4 4-7 10-8 24Z" stroke-width="1.1"/>
+            <path class="dl" d="M177 177c-11-4-17-7-21-11a9 9 0 0 1 13-13c4 4 7 10 8 24Z" stroke-width="1.1"/>
+            <path class="dl" d="M120 86c5 8 8 12 8 16a8 8 0 0 1-16 0c0-4 3-8 8-16Z" stroke-width="1.1"/>
+            <path class="dl" d="M120 154c-5-8-8-12-8-16a8 8 0 0 1 16 0c0 4-3 8-8 16Z" stroke-width="1.1"/>
+            <path class="dl" d="M86 120c8-5 12-8 16-8a8 8 0 0 1 0 16c-4 0-8-3-16-8Z" stroke-width="1.1"/>
+            <path class="dl" d="M154 120c-8 5-12 8-16 8a8 8 0 0 1 0-16c4 0 8 3 16 8Z" stroke-width="1.1"/>
+          </g>
+        </svg>
+      </div>
+
+      <div class="drawsection__text reveal">
+        <p class="eyebrow">Hand-drawn</p>
+        <h2 class="section__title" id="drawTitle">Har design haath se,<br /><em>line by line</em></h2>
+        <p class="section__lede">
+          Koi stencil nahi, koi print nahi. Cone se ek-ek line khud khinchti hai — isliye
+          har design thoda alag, thoda aapka apna hota hai.
+        </p>
+        <ul class="drawsection__meta">
+          <li><strong>Organic cone</strong><span>Chemical-free henna</span></li>
+          <li><strong>2–4 ghante</strong><span>Bridal sitting</span></li>
+          <li><strong>24–48 ghante</strong><span>Colour deepen hota hai</span></li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -483,7 +576,7 @@
         <ul class="book__contact">
           <li>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
-            <a href="tel:+919755550380" data-call>+91&nbsp;97555&nbsp;50380</a>
+            <a href="tel:+919755550240" data-call>+91&nbsp;97555&nbsp;50240</a>
           </li>
           <li>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>
@@ -551,7 +644,7 @@
       <h2 class="finale__title">Aapke haath, meri mehndi —<br />baaki baat WhatsApp par.</h2>
       <div class="finale__actions">
         <a class="btn btn--gold" href="#" data-wa="final">WhatsApp par message karein</a>
-        <a class="btn btn--outline-light" href="tel:+919755550380" data-call>Call:&nbsp;+91&nbsp;97555&nbsp;50380</a>
+        <a class="btn btn--outline-light" href="tel:+919755550240" data-call>Call:&nbsp;+91&nbsp;97555&nbsp;50240</a>
       </div>
     </div>
   </section>
@@ -580,7 +673,7 @@
     <div class="footer__contact">
       <p class="footer__head">Contact</p>
       <a href="#" data-wa="footer">WhatsApp chat</a>
-      <a href="tel:+919755550380" data-call>+91&nbsp;97555&nbsp;50380</a>
+      <a href="tel:+919755550240" data-call>+91&nbsp;97555&nbsp;50240</a>
       <a href="#" data-instagram>Instagram</a>
       <a href="#areas">Service areas</a>
     </div>
@@ -593,18 +686,28 @@
 </footer>
 
 <!-- ================= STICKY MOBILE ACTION BAR ================= -->
-<nav class="mobilebar" aria-label="Quick contact">
-  <a class="mobilebar__item mobilebar__item--call" href="tel:+919755550380" data-call>
+<nav class="appbar" aria-label="Quick navigation">
+  <a class="appbar__item is-active" href="#top" aria-current="page">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2 2.8 10.6h2.6V21h5.2v-5.6h2.8V21h5.2V10.6h2.6L12 3.2Z"/></svg>
+    <span>Home</span>
+  </a>
+  <a class="appbar__item" href="portfolio.html">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h8v8H3V3Zm10 0h8v8h-8V3ZM3 13h8v8H3v-8Zm10 0h8v8h-8v-8Z"/></svg>
+    <span>Designs</span>
+  </a>
+  <a class="appbar__item appbar__item--center" href="#" data-wa="bar" aria-label="WhatsApp par message karein">
+    <span class="appbar__bubble">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.7-6.1c-.3-.1-1.7-.8-1.9-.9s-.4-.1-.6.1-.7.9-.9 1-.3.2-.5 0a6.7 6.7 0 0 1-2-1.2 7.5 7.5 0 0 1-1.4-1.7c-.1-.3 0-.4.1-.5l.5-.6c.1-.2.2-.3.3-.5s0-.4 0-.5-.7-1.6-.9-2.2-.4-.5-.6-.5h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5 5 0 0 0 1 2.6 11 11 0 0 0 4.3 3.8 10 10 0 0 0 1.4.5 3.4 3.4 0 0 0 1.6.1 2.7 2.7 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .2-1.2c-.1-.1-.3-.2-.6-.3Z"/></svg>
+    </span>
+    <span class="appbar__label">Book</span>
+  </a>
+  <a class="appbar__item" href="#estimate">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm.9 4.3v1.2c1.1.2 1.9.9 2.1 2h-1.8c-.1-.5-.5-.8-1.2-.8-.7 0-1 .3-1 .7 0 .4.3.6 1.1.8 1.7.4 2.9.9 2.9 2.5 0 1.3-.9 2.1-2.2 2.3v1.2h-1.5v-1.2c-1.3-.2-2.1-1-2.2-2.2H11c.1.6.6.9 1.4.9.8 0 1.1-.3 1.1-.7 0-.4-.4-.6-1.3-.8-1.6-.4-2.6-.9-2.6-2.4 0-1.2.9-2 2.1-2.2V6.3h1.5Z"/></svg>
+    <span>Rate</span>
+  </a>
+  <a class="appbar__item" href="tel:+919755550240" data-call>
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
     <span>Call</span>
-  </a>
-  <a class="mobilebar__item mobilebar__item--wa" href="#" data-wa="bar">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.7-6.1c-.3-.1-1.7-.8-1.9-.9s-.4-.1-.6.1-.7.9-.9 1-.3.2-.5 0a6.7 6.7 0 0 1-2-1.2 7.5 7.5 0 0 1-1.4-1.7c-.1-.3 0-.4.1-.5l.5-.6c.1-.2.2-.3.3-.5s0-.4 0-.5-.7-1.6-.9-2.2-.4-.5-.6-.5h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5 5 0 0 0 1 2.6 11 11 0 0 0 4.3 3.8 10 10 0 0 0 1.4.5 3.4 3.4 0 0 0 1.6.1 2.7 2.7 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .2-1.2c-.1-.1-.3-.2-.6-.3Z"/></svg>
-    <span>WhatsApp</span>
-  </a>
-  <a class="mobilebar__item" href="#" data-instagram>
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c0 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2 0-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c0-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.1 0-3.5 0-4.7.07-1 .04-1.5.2-1.8.3-.5.2-.8.4-1.1.7-.3.3-.5.6-.7 1.1-.1.3-.3.8-.3 1.8C3.3 8.5 3.3 8.9 3.3 12s0 3.5.1 4.7c0 1 .2 1.5.3 1.8.2.5.4.8.7 1.1.3.3.6.5 1.1.7.3.1.8.3 1.8.3 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1 0 1.5-.2 1.8-.3.5-.2.8-.4 1.1-.7.3-.3.5-.6.7-1.1.1-.3.3-.8.3-1.8.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c0-1-.2-1.5-.3-1.8-.2-.5-.4-.8-.7-1.1a2.9 2.9 0 0 0-1.1-.7c-.3-.1-.8-.3-1.8-.3-1.2-.1-1.6-.1-4.7-.1Zm0 3.1a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4Zm5.2-2.1a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4Z"/></svg>
-    <span>Instagram</span>
   </a>
 </nav>
 
@@ -634,5 +737,6 @@
 <script src="assets/js/site-config.js"></script>
 <script src="assets/js/app.js"></script>
 <script src="assets/js/motion.js"></script>
+<script src="assets/js/mobile.js"></script>
 </body>
 </html>
