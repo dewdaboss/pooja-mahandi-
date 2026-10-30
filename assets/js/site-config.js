@@ -3,8 +3,9 @@
    -------------------------------------------------------------------------
    Poora content yahin se control hota hai (ek hi jagah).
 
-   ⚠️  PRICE NOTE: neeche diye rate *suggestion* hain (design ki difficulty ke
-   hisaab se, easy se bridal tak). Final rate Pooja di confirm karein.
+   RATE KA RULE: jitni kam mehndi, utna kam rate.
+   Sabse aasan (sirf palm mandala) ₹200 se shuru → poora bridal (haath + pair)
+   ₹5,000 tak. Neeche har category ka `price` aap apne hisaab se badal sakti hain.
    ========================================================================= */
 
 const SITE = {
@@ -45,234 +46,194 @@ const SITE = {
     "Aur poore Indore mein",
   ],
 
-  /* ---------- 3. CATEGORIES (portfolio + price list) --------------------
-     Order = easy → bridal. Portfolio page isi order mein sections banata hai.
-     Naya category jodna ho to neeche ek aur object add kar dein.
+  /* ---------- 3. CATEGORIES (kam mehndi → zyada mehndi) -----------------
+     Portfolio page isi order mein sections banata hai.
+     `level` = kitni mehndi lagti hai (1 = kam, 5 = poori bridal).
      --------------------------------------------------------------------- */
   categories: [
     {
       slug: "minimal",
       name: "Simple & Minimal",
-      tag: "Sabse aasan — yahin se shuru",
+      tag: "Sabse kam mehndi",
+      level: 1,
       price: "₹200",
-      from: true,
       time: "20–30 min",
       blurb:
-        "Ek chhota mandala, halka floral motif ya sirf wrist band — roz ke liye, office ke liye, ya pehli baar mehndi lagwane ke liye perfect.",
-      points: ["Ek haath, halka design", "20–30 minute ka kaam", "Karwa Chauth & Teej friendly"],
+        "Sirf ek chhota mandala ya palm par halka motif — kam mehndi, jaldi ready. Pehli baar lagwane walon aur daily look ke liye best.",
+      points: ["Sirf palm ya wrist", "20–30 minute", "Office / college friendly"],
+    },
+    {
+      slug: "floral",
+      name: "Floral & Arabic",
+      tag: "Halka aur modern",
+      level: 2,
+      price: "₹500",
+      time: "40–60 min",
+      blurb:
+        "Back of hand par floral vines, leaves aur bold Arabic touches — kam space mein sundar look. Ring function aur friend ke sangeet ke liye perfect.",
+      points: ["Back of hand + fingers", "Floral vines & Arabic fill", "40–60 minute"],
     },
     {
       slug: "festive",
       name: "Festive & Karwa Chauth",
       tag: "Tyohaar special",
-      price: "₹400",
-      from: true,
-      time: "40–60 min",
-      blurb:
-        "Dono haathon par mandala ya lotus, kalai par band — Karwa Chauth, Teej, Rakhi aur pooja ke liye sabse pasandida choice.",
-      points: ["Dono haath + kalai band", "Lotus / mandala style", "Pooja & vrat ke liye"],
-    },
-    {
-      slug: "arabic",
-      name: "Arabic & Floral",
-      tag: "Modern look",
-      price: "₹600",
-      from: true,
+      level: 2,
+      price: "₹700",
       time: "45–70 min",
       blurb:
-        "Bold floral vines, leafy trails aur chandelier patterns — kam space mein zyada impact. Front ya back hand, dono par.",
-      points: ["Bold floral & leafy trails", "Front ya back hand", "Finger tips included"],
+        "Dono haathon par lotus ya mandala, kalai par band — Karwa Chauth, Teej aur pooja ke liye sabse pasandida design.",
+      points: ["Dono haath", "Lotus / mandala", "Kalai band included"],
+    },
+    {
+      slug: "peacock",
+      name: "Peacock & Motif",
+      tag: "Design wali mehndi",
+      level: 3,
+      price: "₹900",
+      time: "1 ghanta",
+      blurb:
+        "More (peacock), jhumka trails aur lotus motif — palm par ek bada, sundar design. Function aur reception ke liye.",
+      points: ["Peacock / jhumka motif", "Ek haath, palm bhar", "Finger tips included"],
+    },
+    {
+      slug: "halfhand",
+      name: "Half Hand",
+      tag: "Aadha haath bhara",
+      level: 3,
+      price: "₹1,200",
+      time: "1–1.5 ghanta",
+      blurb:
+        "Back of hand se kalai tak — aadha haath bhara hua design. Engagement aur mehndi function ke liye sabse popular.",
+      points: ["Back of hand + wrist", "Aadha haath coverage", "Floral / mandala mix"],
     },
     {
       slug: "portrait",
-      name: "Frame & Portrait Design",
+      name: "Portrait & Couple",
       tag: "Story wali mehndi",
-      price: "₹1,500",
-      from: true,
+      level: 4,
+      price: "₹2,000",
       time: "1.5–2.5 ghante",
       blurb:
-        "Haath par dulha-dulhan ki figure, chhatri, kalash ya mandir ka frame — aapki kahani, aapke haath par. Photo reference se banti hai.",
-      points: ["Dulha-dulhan / chhatri figures", "Aapke photo se custom frame", "Sangeet & engagement special"],
+        "Dulha-dulhan ki figure, chhatri, kalash ya mandir ka frame — aapki kahani aapke haath par. Photo reference se banti hai.",
+      points: ["Dulha-dulhan / couple figure", "Frame & chhatri details", "Photo se custom"],
     },
     {
-      slug: "rajwadi",
-      name: "Rajwadi Bridal",
-      tag: "Dulhan ke liye",
-      price: "₹2,500",
-      from: true,
+      slug: "bridal",
+      name: "Bridal Full Hand",
+      tag: "Poora haath bhara",
+      level: 4,
+      price: "₹2,800",
       time: "2–3 ghante",
       blurb:
-        "Peacock, haathi, mandir aur jaali — poora haath bharke traditional bridal design, kalai aur forearm tak.",
-      points: ["Peacock, elephant & mandir motifs", "Full front + back + wrist", "Dulhan ki pehli pasand"],
+        "Poora haath + kalai + forearm tak dense design — mandala, jaali, peacock aur elephant motifs. Dulhan ke haath ke liye.",
+      points: ["Front + back + forearm", "Dense traditional work", "Dulhan ki pehli pasand"],
     },
     {
       slug: "bridal-package",
       name: "Bridal Package — Haath + Pair",
       tag: "Dulhan Special",
+      level: 5,
       price: "₹5,000",
-      from: true,
       time: "3–4 ghante",
       blurb:
-        "Shaadi ke din ka complete look — rajwadi haath aur pair ki mehndi, ek hi sitting mein. Trial design discussion WhatsApp par.",
-      points: ["Rajwadi haath + pair mehndi", "Trial design discussion free", "Family / guest mehndi add-on"],
+        "Shaadi ke din ka complete look — bridal haath + dono pair ki mehndi, ek hi sitting mein. Trial design discussion WhatsApp par free.",
+      points: ["Bridal haath + pair", "Trial discussion free", "Guest mehndi add-on"],
       feature: true,
       noGallery: true,
     },
   ],
 
-  /* ---------- 4. PORTFOLIO (18 designs) ---------------------------------
-     Naya photo add karne ke liye ek line copy-paste karein.
-     cat = categories ke slug se match hona chahiye.
+  /* ---------- 4. PORTFOLIO (28 designs) ---------------------------------
+     Naya photo add karne ke liye ek entry copy karein.
+     `cat` = upar ke categories ke slug se match hona chahiye.
      --------------------------------------------------------------------- */
   gallery: [
-    {
-      src: "assets/img/opt/minimal-1-654.webp",
-      thumb: "assets/img/opt/minimal-1-480.webp",
-      cat: "minimal",
-      title: "Mandala Palms — Halka Look",
-      alt: "Simple mandala mehndi on both palms with wrist band, light design",
-    },
-    {
-      src: "assets/img/opt/minimal-4-735.webp",
-      thumb: "assets/img/opt/minimal-4-480.webp",
-      cat: "minimal",
-      title: "Single Mandala — Clean Design",
-      alt: "Single round mandala mehndi on palm with minimal wrist band",
-    },
-    {
-      src: "assets/img/opt/minimal-2-736.webp",
-      thumb: "assets/img/opt/minimal-2-480.webp",
-      cat: "minimal",
-      title: "Floral Dot + Wrist Band",
-      alt: "Small floral dot mehndi motif on hand with delicate wrist band",
-    },
-    {
-      src: "assets/img/opt/minimal-3-736.webp",
-      thumb: "assets/img/opt/minimal-3-480.webp",
-      cat: "minimal",
-      title: "Deep Red Sun Mandala",
-      alt: "Deep red sun mandala mehndi on both palms, dark stain",
-    },
-    {
-      src: "assets/img/opt/festive-1-736.webp",
-      thumb: "assets/img/opt/festive-1-480.webp",
-      cat: "festive",
-      title: "Lotus Mandala — Dono Haath",
-      alt: "Lotus mandala mehndi on both palms with leaf bands, festive design",
-    },
-    {
-      src: "assets/img/opt/festive-2-736.webp",
-      thumb: "assets/img/opt/festive-2-480.webp",
-      cat: "festive",
-      title: "Karwa Chauth Special",
-      alt: "Karwa Chauth mehndi with mandala and jewelled wrist band",
-    },
-    {
-      src: "assets/img/opt/arabic-1-720.webp",
-      thumb: "assets/img/opt/arabic-1-480.webp",
-      cat: "arabic",
-      title: "Bold Indo-Arabic Fill",
-      alt: "Bold Indo-Arabic mehndi with filled palm and dotted trails",
-    },
-    {
-      src: "assets/img/opt/arabic-2-735.webp",
-      thumb: "assets/img/opt/arabic-2-480.webp",
-      cat: "arabic",
-      title: "Floral Vine Half Hand",
-      alt: "Floral vine Arabic mehndi on half hand with leaves and flowers",
-    },
-    {
-      src: "assets/img/opt/arabic-3-736.webp",
-      thumb: "assets/img/opt/arabic-3-480.webp",
-      cat: "arabic",
-      title: "Chandelier Trails",
-      alt: "Chandelier jhumka trail mehndi design on both hands with mandala",
-    },
-    {
-      src: "assets/img/opt/arabic-4-736.webp",
-      thumb: "assets/img/opt/arabic-4-480.webp",
-      cat: "arabic",
-      title: "Lotus Motif — Arabic Style",
-      alt: "Lotus motif Arabic mehndi with leafy wrist band on both hands",
-    },
-    {
-      src: "assets/img/opt/portrait-1-736.webp",
-      thumb: "assets/img/opt/portrait-1-480.webp",
-      cat: "portrait",
-      title: "Dulhan Pallu Portrait",
-      alt: "Bridal mehndi with bride figure wearing lehenga pallu on hand",
-    },
-    {
-      src: "assets/img/opt/portrait-4-736.webp",
-      thumb: "assets/img/opt/portrait-4-480.webp",
-      cat: "portrait",
-      title: "Bride & Groom with Dome",
-      alt: "Bridal mehndi portrait of bride and groom under a dome with swans",
-    },
-    {
-      src: "assets/img/opt/portrait-2-688.webp",
-      thumb: "assets/img/opt/portrait-2-480.webp",
-      cat: "portrait",
-      title: "Dulha-Dulhan Story Frame",
-      alt: "Mehndi design with diamond frame containing bride and groom portrait",
-    },
-    {
-      src: "assets/img/opt/portrait-3-736.webp",
-      thumb: "assets/img/opt/portrait-3-480.webp",
-      cat: "portrait",
-      title: "Chhatri & Kalash Frames",
-      alt: "Bridal mehndi with chhatri, kalash and bride figure inside geometric frames",
-    },
-    {
-      src: "assets/img/opt/rajwadi-2-736.webp",
-      thumb: "assets/img/opt/rajwadi-2-480.webp",
-      cat: "rajwadi",
-      title: "Lotus Rajwadi — Full Hand",
-      alt: "Rajwadi style lotus mehndi covering full hands with elephant motifs",
-    },
-    {
-      src: "assets/img/opt/rajwadi-4-735.webp",
-      thumb: "assets/img/opt/rajwadi-4-480.webp",
-      cat: "rajwadi",
-      title: "Peacock Rajwadi Bridal",
-      alt: "Rajwadi bridal mehndi with peacock inside floral frame on both hands",
-    },
-    {
-      src: "assets/img/opt/rajwadi-3-736.webp",
-      thumb: "assets/img/opt/rajwadi-3-480.webp",
-      cat: "rajwadi",
-      title: "Traditional Bridal Full Coverage",
-      alt: "Full coverage traditional bridal mehndi on both hands with dense mandalas",
-    },
-    {
-      src: "assets/img/opt/rajwadi-1-736.webp",
-      thumb: "assets/img/opt/rajwadi-1-480.webp",
-      cat: "rajwadi",
-      title: "Rajwadi Elephant & Mandir",
-      alt: "Rajwadi bridal mehndi with elephant, mandir and bride figure motifs",
-    },
+    /* ---- Minimal ---- */
+    { src: "assets/img/opt/minimal-palm-dots-654.webp", thumb: "assets/img/opt/minimal-palm-dots-480.webp", cat: "minimal",
+      title: "Palm Dots — Sabse Halka", alt: "Minimal mehndi with small dot motif on palm and simple wrist band" },
+    { src: "assets/img/opt/minimal-single-mandala-736.webp", thumb: "assets/img/opt/minimal-single-mandala-480.webp", cat: "minimal",
+      title: "Single Mandala", alt: "Single round mandala mehndi on palm with minimal wrist band" },
+    { src: "assets/img/opt/minimal-wrist-mandala-735.webp", thumb: "assets/img/opt/minimal-wrist-mandala-480.webp", cat: "minimal",
+      title: "Wrist Mandala — Clean", alt: "Small mandala on back of hand with delicate wrist band mehndi" },
+
+    /* ---- Floral & Arabic ---- */
+    { src: "assets/img/opt/floral-bouquet-vine-736.webp", thumb: "assets/img/opt/floral-bouquet-vine-480.webp", cat: "floral",
+      title: "Floral Bouquet Vine", alt: "Floral bouquet mehndi with leaves and vine on back of hand" },
+    { src: "assets/img/opt/floral-swirl-backhand-736.webp", thumb: "assets/img/opt/floral-swirl-backhand-480.webp", cat: "floral",
+      title: "Swirl & Floral Trail", alt: "Swirling floral mehndi design with leaves on back of hand" },
+    { src: "assets/img/opt/floral-vine-half-735.webp", thumb: "assets/img/opt/floral-vine-half-480.webp", cat: "floral",
+      title: "Floral Vine Half Hand", alt: "Floral vine Arabic mehndi on half hand with leaves and flowers" },
+    { src: "assets/img/opt/arabic-bold-fill-720.webp", thumb: "assets/img/opt/arabic-bold-fill-480.webp", cat: "floral",
+      title: "Bold Indo-Arabic Fill", alt: "Bold Indo-Arabic mehndi with filled palm and dotted trails" },
+
+    /* ---- Festive ---- */
+    { src: "assets/img/opt/festive-lotus-scallop-736.webp", thumb: "assets/img/opt/festive-lotus-scallop-480.webp", cat: "festive",
+      title: "Lotus & Scallop (Deep Red)", alt: "Deep red lotus mehndi with scallop borders on palm and fingers" },
+    { src: "assets/img/opt/festive-lotus-palms-736.webp", thumb: "assets/img/opt/festive-lotus-palms-480.webp", cat: "festive",
+      title: "Lotus Mandala — Dono Haath", alt: "Lotus mandala mehndi on both palms with leaf bands, festive design" },
+    { src: "assets/img/opt/festive-red-mandala-736.webp", thumb: "assets/img/opt/festive-red-mandala-480.webp", cat: "festive",
+      title: "Karwa Chauth Special", alt: "Karwa Chauth mehndi with mandala and jewelled wrist band" },
+    { src: "assets/img/opt/festive-sun-palms-736.webp", thumb: "assets/img/opt/festive-sun-palms-480.webp", cat: "festive",
+      title: "Sun Mandala — Dono Haath", alt: "Sun mandala mehndi on both palms with dark henna stain" },
+
+    /* ---- Peacock & Motif ---- */
+    { src: "assets/img/opt/peacock-palm-736.webp", thumb: "assets/img/opt/peacock-palm-480.webp", cat: "peacock",
+      title: "Peacock Palm", alt: "Peacock motif mehndi covering palm with feather detail" },
+    { src: "assets/img/opt/motif-chandelier-736.webp", thumb: "assets/img/opt/motif-chandelier-480.webp", cat: "peacock",
+      title: "Chandelier Trails", alt: "Chandelier jhumka trail mehndi design on both hands with mandala" },
+    { src: "assets/img/opt/motif-lotus-both-736.webp", thumb: "assets/img/opt/motif-lotus-both-480.webp", cat: "peacock",
+      title: "Lotus Motif — Both Hands", alt: "Lotus motif mehndi with leafy wrist band on both hands" },
+
+    /* ---- Half Hand ---- */
+    { src: "assets/img/opt/halfhand-floral-crown-736.webp", thumb: "assets/img/opt/halfhand-floral-crown-480.webp", cat: "halfhand",
+      title: "Floral Crown Half Hand", alt: "Half hand mehndi with floral crown design and jhumka borders" },
+    { src: "assets/img/opt/halfhand-rose-mandala-735.webp", thumb: "assets/img/opt/halfhand-rose-mandala-480.webp", cat: "halfhand",
+      title: "Rose & Mandala Half Hand", alt: "Rose and mandala half hand mehndi with jaali pattern on wrist" },
+
+    /* ---- Portrait & Couple ---- */
+    { src: "assets/img/opt/portrait-bride-pallu-736.webp", thumb: "assets/img/opt/portrait-bride-pallu-480.webp", cat: "portrait",
+      title: "Dulhan Pallu Portrait", alt: "Bridal mehndi with bride figure wearing lehenga pallu on hand" },
+    { src: "assets/img/opt/portrait-frame-kalash-736.webp", thumb: "assets/img/opt/portrait-frame-kalash-480.webp", cat: "portrait",
+      title: "Chhatri & Kalash Frames", alt: "Bridal mehndi with chhatri, kalash and bride figure inside geometric frames" },
+    { src: "assets/img/opt/portrait-couple-diamond-688.webp", thumb: "assets/img/opt/portrait-couple-diamond-480.webp", cat: "portrait",
+      title: "Couple in Diamond Frame", alt: "Bridal mehndi with diamond frame containing bride and groom portrait" },
+    { src: "assets/img/opt/portrait-couple-dome-736.webp", thumb: "assets/img/opt/portrait-couple-dome-480.webp", cat: "portrait",
+      title: "Couple under Dome", alt: "Bridal mehndi portrait of bride and groom under a dome with swans" },
+
+    /* ---- Bridal Full Hand ---- */
+    { src: "assets/img/opt/bridal-mandala-forearm-720.webp", thumb: "assets/img/opt/bridal-mandala-forearm-480.webp", cat: "bridal",
+      title: "Bridal Mandala — Forearm Tak", alt: "Bridal mehndi covering hands and forearms with large mandala and drops" },
+    { src: "assets/img/opt/bridal-dense-both-736.webp", thumb: "assets/img/opt/bridal-dense-both-480.webp", cat: "bridal",
+      title: "Dense Bridal — Dono Haath", alt: "Dense bridal mehndi on both hands with scallop mandalas and jaali" },
+    { src: "assets/img/opt/bridal-jaali-both-572.webp", thumb: "assets/img/opt/bridal-jaali-both-480.webp", cat: "bridal",
+      title: "Jaali & Border Bridal", alt: "Bridal mehndi with jaali net pattern and heavy borders on both hands" },
+    { src: "assets/img/opt/bridal-lotus-forearm-736.webp", thumb: "assets/img/opt/bridal-lotus-forearm-480.webp", cat: "bridal",
+      title: "Lotus Full Hand", alt: "Bridal mehndi with lotus mandala on palm and floral forearm design" },
+    { src: "assets/img/opt/bridal-elephant-mandir-736.webp", thumb: "assets/img/opt/bridal-elephant-mandir-480.webp", cat: "bridal",
+      title: "Elephant & Mandir", alt: "Rajwadi bridal mehndi with elephant, mandir and bride figure motifs" },
+    { src: "assets/img/opt/bridal-lotus-pink-736.webp", thumb: "assets/img/opt/bridal-lotus-pink-480.webp", cat: "bridal",
+      title: "Rajwadi Lotus Bridal", alt: "Rajwadi style lotus mehndi covering full hands with elephant motifs" },
+    { src: "assets/img/opt/bridal-mandala-cream-736.webp", thumb: "assets/img/opt/bridal-mandala-cream-480.webp", cat: "bridal",
+      title: "Traditional Full Coverage", alt: "Full coverage traditional bridal mehndi on both hands with dense mandalas" },
+    { src: "assets/img/opt/bridal-peacock-frame-735.webp", thumb: "assets/img/opt/bridal-peacock-frame-480.webp", cat: "bridal",
+      title: "Peacock Frame Bridal", alt: "Rajwadi bridal mehndi with peacock inside floral frame on both hands" },
   ],
 
   /* ---------- 5. REVIEWS ------------------------------------------------
-     ⚠️ Asli client reviews milne par `reviews` mein daalein aur
-     showReviews: true kar dein. Tab tak section hidden rehta hai.
+     Asli client reviews milne par `reviews` bhar dein aur showReviews: true.
      ------------------------------------------------------------------- */
   showReviews: false,
-  reviews: [
-    {
-      text: "Meri shaadi ke liye itni detailed mehndi aayi thi, colour bhi bahut dark aaya.",
-      name: "Sneha P.",
-      detail: "Bridal Mehndi — Vijay Nagar",
-    },
-  ],
+  reviews: [],
 
   /* ---------- 6. BOOKING FORM DROPDOWN -------------------------------- */
   serviceOptions: [
     "Simple & Minimal (₹200 se)",
-    "Festive / Karwa Chauth (₹400 se)",
-    "Arabic & Floral (₹600 se)",
-    "Frame & Portrait (₹1,500 se)",
-    "Rajwadi Bridal (₹2,500 se)",
+    "Floral & Arabic (₹500 se)",
+    "Festive / Karwa Chauth (₹700 se)",
+    "Peacock & Motif (₹900 se)",
+    "Half Hand (₹1,200 se)",
+    "Portrait & Couple (₹2,000 se)",
+    "Bridal Full Hand (₹2,800 se)",
     "Bridal Package — haath + pair (₹5,000 se)",
     "Guest / Family mehndi (group)",
     "Kuch aur — puchhna hai",

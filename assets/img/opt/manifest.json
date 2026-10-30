@@ -1,397 +1,617 @@
 {
- "minimal-1": {
+ "minimal-palm-dots": {
+  "cat": "minimal",
   "w": 654,
   "h": 854,
-  "cat": "minimal",
   "variants": [
    {
     "w": 360,
     "h": 470,
-    "file": "minimal-1-360.webp"
+    "file": "minimal-palm-dots-360.webp"
    },
    {
     "w": 480,
     "h": 627,
-    "file": "minimal-1-480.webp"
+    "file": "minimal-palm-dots-480.webp"
    },
    {
     "w": 654,
     "h": 854,
-    "file": "minimal-1-654.webp"
+    "file": "minimal-palm-dots-654.webp"
    }
   ]
  },
- "minimal-2": {
+ "minimal-single-mandala": {
+  "cat": "minimal",
   "w": 736,
   "h": 1308,
-  "cat": "minimal",
   "variants": [
    {
     "w": 360,
     "h": 640,
-    "file": "minimal-2-360.webp"
+    "file": "minimal-single-mandala-360.webp"
    },
    {
     "w": 480,
     "h": 853,
-    "file": "minimal-2-480.webp"
+    "file": "minimal-single-mandala-480.webp"
    },
    {
     "w": 736,
     "h": 1308,
-    "file": "minimal-2-736.webp"
+    "file": "minimal-single-mandala-736.webp"
    }
   ]
  },
- "minimal-3": {
-  "w": 736,
-  "h": 981,
+ "minimal-wrist-mandala": {
   "cat": "minimal",
-  "variants": [
-   {
-    "w": 360,
-    "h": 480,
-    "file": "minimal-3-360.webp"
-   },
-   {
-    "w": 480,
-    "h": 640,
-    "file": "minimal-3-480.webp"
-   },
-   {
-    "w": 736,
-    "h": 981,
-    "file": "minimal-3-736.webp"
-   }
-  ]
- },
- "minimal-4": {
   "w": 735,
   "h": 919,
-  "cat": "minimal",
   "variants": [
    {
     "w": 360,
     "h": 450,
-    "file": "minimal-4-360.webp"
+    "file": "minimal-wrist-mandala-360.webp"
    },
    {
     "w": 480,
     "h": 600,
-    "file": "minimal-4-480.webp"
+    "file": "minimal-wrist-mandala-480.webp"
    },
    {
     "w": 735,
     "h": 919,
-    "file": "minimal-4-735.webp"
+    "file": "minimal-wrist-mandala-735.webp"
    }
   ]
  },
- "festive-1": {
+ "floral-bouquet-vine": {
+  "cat": "floral",
   "w": 736,
   "h": 1104,
-  "cat": "festive",
   "variants": [
    {
     "w": 360,
     "h": 540,
-    "file": "festive-1-360.webp"
+    "file": "floral-bouquet-vine-360.webp"
    },
    {
     "w": 480,
     "h": 720,
-    "file": "festive-1-480.webp"
+    "file": "floral-bouquet-vine-480.webp"
    },
    {
     "w": 736,
     "h": 1104,
-    "file": "festive-1-736.webp"
+    "file": "floral-bouquet-vine-736.webp"
    }
   ]
  },
- "festive-2": {
+ "floral-swirl-backhand": {
+  "cat": "floral",
   "w": 736,
-  "h": 1318,
-  "cat": "festive",
+  "h": 1044,
   "variants": [
    {
     "w": 360,
-    "h": 645,
-    "file": "festive-2-360.webp"
+    "h": 511,
+    "file": "floral-swirl-backhand-360.webp"
    },
    {
     "w": 480,
-    "h": 860,
-    "file": "festive-2-480.webp"
+    "h": 681,
+    "file": "floral-swirl-backhand-480.webp"
    },
    {
     "w": 736,
-    "h": 1318,
-    "file": "festive-2-736.webp"
+    "h": 1044,
+    "file": "floral-swirl-backhand-736.webp"
    }
   ]
  },
- "arabic-1": {
-  "w": 720,
-  "h": 1196,
-  "cat": "arabic",
-  "variants": [
-   {
-    "w": 360,
-    "h": 598,
-    "file": "arabic-1-360.webp"
-   },
-   {
-    "w": 480,
-    "h": 797,
-    "file": "arabic-1-480.webp"
-   },
-   {
-    "w": 720,
-    "h": 1196,
-    "file": "arabic-1-720.webp"
-   }
-  ]
- },
- "arabic-2": {
+ "floral-vine-half": {
+  "cat": "floral",
   "w": 735,
   "h": 1059,
-  "cat": "arabic",
   "variants": [
    {
     "w": 360,
     "h": 519,
-    "file": "arabic-2-360.webp"
+    "file": "floral-vine-half-360.webp"
    },
    {
     "w": 480,
     "h": 692,
-    "file": "arabic-2-480.webp"
+    "file": "floral-vine-half-480.webp"
    },
    {
     "w": 735,
     "h": 1059,
-    "file": "arabic-2-735.webp"
+    "file": "floral-vine-half-735.webp"
    }
   ]
  },
- "arabic-3": {
-  "w": 736,
-  "h": 1104,
-  "cat": "arabic",
+ "arabic-bold-fill": {
+  "cat": "floral",
+  "w": 720,
+  "h": 1196,
   "variants": [
    {
     "w": 360,
-    "h": 540,
-    "file": "arabic-3-360.webp"
+    "h": 598,
+    "file": "arabic-bold-fill-360.webp"
    },
    {
     "w": 480,
-    "h": 720,
-    "file": "arabic-3-480.webp"
+    "h": 797,
+    "file": "arabic-bold-fill-480.webp"
    },
    {
-    "w": 736,
-    "h": 1104,
-    "file": "arabic-3-736.webp"
+    "w": 720,
+    "h": 1196,
+    "file": "arabic-bold-fill-720.webp"
    }
   ]
  },
- "arabic-4": {
-  "w": 736,
-  "h": 736,
-  "cat": "arabic",
-  "variants": [
-   {
-    "w": 360,
-    "h": 360,
-    "file": "arabic-4-360.webp"
-   },
-   {
-    "w": 480,
-    "h": 480,
-    "file": "arabic-4-480.webp"
-   },
-   {
-    "w": 736,
-    "h": 736,
-    "file": "arabic-4-736.webp"
-   }
-  ]
- },
- "portrait-1": {
+ "festive-lotus-scallop": {
+  "cat": "festive",
   "w": 736,
   "h": 1308,
-  "cat": "portrait",
   "variants": [
    {
     "w": 360,
     "h": 640,
-    "file": "portrait-1-360.webp"
+    "file": "festive-lotus-scallop-360.webp"
    },
    {
     "w": 480,
     "h": 853,
-    "file": "portrait-1-480.webp"
+    "file": "festive-lotus-scallop-480.webp"
    },
    {
     "w": 736,
     "h": 1308,
-    "file": "portrait-1-736.webp"
+    "file": "festive-lotus-scallop-736.webp"
    }
   ]
  },
- "portrait-2": {
-  "w": 688,
-  "h": 1223,
-  "cat": "portrait",
-  "variants": [
-   {
-    "w": 360,
-    "h": 640,
-    "file": "portrait-2-360.webp"
-   },
-   {
-    "w": 480,
-    "h": 853,
-    "file": "portrait-2-480.webp"
-   },
-   {
-    "w": 688,
-    "h": 1223,
-    "file": "portrait-2-688.webp"
-   }
-  ]
- },
- "portrait-3": {
-  "w": 736,
-  "h": 1307,
-  "cat": "portrait",
-  "variants": [
-   {
-    "w": 360,
-    "h": 639,
-    "file": "portrait-3-360.webp"
-   },
-   {
-    "w": 480,
-    "h": 852,
-    "file": "portrait-3-480.webp"
-   },
-   {
-    "w": 736,
-    "h": 1307,
-    "file": "portrait-3-736.webp"
-   }
-  ]
- },
- "portrait-4": {
-  "w": 736,
-  "h": 1307,
-  "cat": "portrait",
-  "variants": [
-   {
-    "w": 360,
-    "h": 639,
-    "file": "portrait-4-360.webp"
-   },
-   {
-    "w": 480,
-    "h": 852,
-    "file": "portrait-4-480.webp"
-   },
-   {
-    "w": 736,
-    "h": 1307,
-    "file": "portrait-4-736.webp"
-   }
-  ]
- },
- "rajwadi-1": {
-  "w": 736,
-  "h": 1307,
-  "cat": "rajwadi",
-  "variants": [
-   {
-    "w": 360,
-    "h": 639,
-    "file": "rajwadi-1-360.webp"
-   },
-   {
-    "w": 480,
-    "h": 852,
-    "file": "rajwadi-1-480.webp"
-   },
-   {
-    "w": 736,
-    "h": 1307,
-    "file": "rajwadi-1-736.webp"
-   }
-  ]
- },
- "rajwadi-2": {
-  "w": 736,
-  "h": 920,
-  "cat": "rajwadi",
-  "variants": [
-   {
-    "w": 360,
-    "h": 450,
-    "file": "rajwadi-2-360.webp"
-   },
-   {
-    "w": 480,
-    "h": 600,
-    "file": "rajwadi-2-480.webp"
-   },
-   {
-    "w": 736,
-    "h": 920,
-    "file": "rajwadi-2-736.webp"
-   }
-  ]
- },
- "rajwadi-3": {
+ "festive-lotus-palms": {
+  "cat": "festive",
   "w": 736,
   "h": 1104,
-  "cat": "rajwadi",
   "variants": [
    {
     "w": 360,
     "h": 540,
-    "file": "rajwadi-3-360.webp"
+    "file": "festive-lotus-palms-360.webp"
    },
    {
     "w": 480,
     "h": 720,
-    "file": "rajwadi-3-480.webp"
+    "file": "festive-lotus-palms-480.webp"
    },
    {
     "w": 736,
     "h": 1104,
-    "file": "rajwadi-3-736.webp"
+    "file": "festive-lotus-palms-736.webp"
    }
   ]
  },
- "rajwadi-4": {
+ "festive-red-mandala": {
+  "cat": "festive",
+  "w": 736,
+  "h": 1318,
+  "variants": [
+   {
+    "w": 360,
+    "h": 645,
+    "file": "festive-red-mandala-360.webp"
+   },
+   {
+    "w": 480,
+    "h": 860,
+    "file": "festive-red-mandala-480.webp"
+   },
+   {
+    "w": 736,
+    "h": 1318,
+    "file": "festive-red-mandala-736.webp"
+   }
+  ]
+ },
+ "festive-sun-palms": {
+  "cat": "festive",
+  "w": 736,
+  "h": 981,
+  "variants": [
+   {
+    "w": 360,
+    "h": 480,
+    "file": "festive-sun-palms-360.webp"
+   },
+   {
+    "w": 480,
+    "h": 640,
+    "file": "festive-sun-palms-480.webp"
+   },
+   {
+    "w": 736,
+    "h": 981,
+    "file": "festive-sun-palms-736.webp"
+   }
+  ]
+ },
+ "peacock-palm": {
+  "cat": "peacock",
+  "w": 736,
+  "h": 1349,
+  "variants": [
+   {
+    "w": 360,
+    "h": 660,
+    "file": "peacock-palm-360.webp"
+   },
+   {
+    "w": 480,
+    "h": 880,
+    "file": "peacock-palm-480.webp"
+   },
+   {
+    "w": 736,
+    "h": 1349,
+    "file": "peacock-palm-736.webp"
+   }
+  ]
+ },
+ "motif-chandelier": {
+  "cat": "peacock",
+  "w": 736,
+  "h": 1104,
+  "variants": [
+   {
+    "w": 360,
+    "h": 540,
+    "file": "motif-chandelier-360.webp"
+   },
+   {
+    "w": 480,
+    "h": 720,
+    "file": "motif-chandelier-480.webp"
+   },
+   {
+    "w": 736,
+    "h": 1104,
+    "file": "motif-chandelier-736.webp"
+   }
+  ]
+ },
+ "motif-lotus-both": {
+  "cat": "peacock",
+  "w": 736,
+  "h": 736,
+  "variants": [
+   {
+    "w": 360,
+    "h": 360,
+    "file": "motif-lotus-both-360.webp"
+   },
+   {
+    "w": 480,
+    "h": 480,
+    "file": "motif-lotus-both-480.webp"
+   },
+   {
+    "w": 736,
+    "h": 736,
+    "file": "motif-lotus-both-736.webp"
+   }
+  ]
+ },
+ "halfhand-floral-crown": {
+  "cat": "halfhand",
+  "w": 736,
+  "h": 1104,
+  "variants": [
+   {
+    "w": 360,
+    "h": 540,
+    "file": "halfhand-floral-crown-360.webp"
+   },
+   {
+    "w": 480,
+    "h": 720,
+    "file": "halfhand-floral-crown-480.webp"
+   },
+   {
+    "w": 736,
+    "h": 1104,
+    "file": "halfhand-floral-crown-736.webp"
+   }
+  ]
+ },
+ "halfhand-rose-mandala": {
+  "cat": "halfhand",
+  "w": 735,
+  "h": 1110,
+  "variants": [
+   {
+    "w": 360,
+    "h": 544,
+    "file": "halfhand-rose-mandala-360.webp"
+   },
+   {
+    "w": 480,
+    "h": 725,
+    "file": "halfhand-rose-mandala-480.webp"
+   },
+   {
+    "w": 735,
+    "h": 1110,
+    "file": "halfhand-rose-mandala-735.webp"
+   }
+  ]
+ },
+ "portrait-bride-pallu": {
+  "cat": "portrait",
+  "w": 736,
+  "h": 1308,
+  "variants": [
+   {
+    "w": 360,
+    "h": 640,
+    "file": "portrait-bride-pallu-360.webp"
+   },
+   {
+    "w": 480,
+    "h": 853,
+    "file": "portrait-bride-pallu-480.webp"
+   },
+   {
+    "w": 736,
+    "h": 1308,
+    "file": "portrait-bride-pallu-736.webp"
+   }
+  ]
+ },
+ "portrait-frame-kalash": {
+  "cat": "portrait",
+  "w": 736,
+  "h": 1307,
+  "variants": [
+   {
+    "w": 360,
+    "h": 639,
+    "file": "portrait-frame-kalash-360.webp"
+   },
+   {
+    "w": 480,
+    "h": 852,
+    "file": "portrait-frame-kalash-480.webp"
+   },
+   {
+    "w": 736,
+    "h": 1307,
+    "file": "portrait-frame-kalash-736.webp"
+   }
+  ]
+ },
+ "portrait-couple-diamond": {
+  "cat": "portrait",
+  "w": 688,
+  "h": 1223,
+  "variants": [
+   {
+    "w": 360,
+    "h": 640,
+    "file": "portrait-couple-diamond-360.webp"
+   },
+   {
+    "w": 480,
+    "h": 853,
+    "file": "portrait-couple-diamond-480.webp"
+   },
+   {
+    "w": 688,
+    "h": 1223,
+    "file": "portrait-couple-diamond-688.webp"
+   }
+  ]
+ },
+ "portrait-couple-dome": {
+  "cat": "portrait",
+  "w": 736,
+  "h": 1307,
+  "variants": [
+   {
+    "w": 360,
+    "h": 639,
+    "file": "portrait-couple-dome-360.webp"
+   },
+   {
+    "w": 480,
+    "h": 852,
+    "file": "portrait-couple-dome-480.webp"
+   },
+   {
+    "w": 736,
+    "h": 1307,
+    "file": "portrait-couple-dome-736.webp"
+   }
+  ]
+ },
+ "bridal-mandala-forearm": {
+  "cat": "bridal",
+  "w": 720,
+  "h": 1274,
+  "variants": [
+   {
+    "w": 360,
+    "h": 637,
+    "file": "bridal-mandala-forearm-360.webp"
+   },
+   {
+    "w": 480,
+    "h": 849,
+    "file": "bridal-mandala-forearm-480.webp"
+   },
+   {
+    "w": 720,
+    "h": 1274,
+    "file": "bridal-mandala-forearm-720.webp"
+   }
+  ]
+ },
+ "bridal-dense-both": {
+  "cat": "bridal",
+  "w": 736,
+  "h": 1104,
+  "variants": [
+   {
+    "w": 360,
+    "h": 540,
+    "file": "bridal-dense-both-360.webp"
+   },
+   {
+    "w": 480,
+    "h": 720,
+    "file": "bridal-dense-both-480.webp"
+   },
+   {
+    "w": 736,
+    "h": 1104,
+    "file": "bridal-dense-both-736.webp"
+   }
+  ]
+ },
+ "bridal-jaali-both": {
+  "cat": "bridal",
+  "w": 572,
+  "h": 1024,
+  "variants": [
+   {
+    "w": 360,
+    "h": 644,
+    "file": "bridal-jaali-both-360.webp"
+   },
+   {
+    "w": 480,
+    "h": 859,
+    "file": "bridal-jaali-both-480.webp"
+   },
+   {
+    "w": 572,
+    "h": 1024,
+    "file": "bridal-jaali-both-572.webp"
+   }
+  ]
+ },
+ "bridal-lotus-forearm": {
+  "cat": "bridal",
+  "w": 736,
+  "h": 1308,
+  "variants": [
+   {
+    "w": 360,
+    "h": 640,
+    "file": "bridal-lotus-forearm-360.webp"
+   },
+   {
+    "w": 480,
+    "h": 853,
+    "file": "bridal-lotus-forearm-480.webp"
+   },
+   {
+    "w": 736,
+    "h": 1308,
+    "file": "bridal-lotus-forearm-736.webp"
+   }
+  ]
+ },
+ "bridal-elephant-mandir": {
+  "cat": "bridal",
+  "w": 736,
+  "h": 1307,
+  "variants": [
+   {
+    "w": 360,
+    "h": 639,
+    "file": "bridal-elephant-mandir-360.webp"
+   },
+   {
+    "w": 480,
+    "h": 852,
+    "file": "bridal-elephant-mandir-480.webp"
+   },
+   {
+    "w": 736,
+    "h": 1307,
+    "file": "bridal-elephant-mandir-736.webp"
+   }
+  ]
+ },
+ "bridal-lotus-pink": {
+  "cat": "bridal",
+  "w": 736,
+  "h": 920,
+  "variants": [
+   {
+    "w": 360,
+    "h": 450,
+    "file": "bridal-lotus-pink-360.webp"
+   },
+   {
+    "w": 480,
+    "h": 600,
+    "file": "bridal-lotus-pink-480.webp"
+   },
+   {
+    "w": 736,
+    "h": 920,
+    "file": "bridal-lotus-pink-736.webp"
+   }
+  ]
+ },
+ "bridal-mandala-cream": {
+  "cat": "bridal",
+  "w": 736,
+  "h": 1104,
+  "variants": [
+   {
+    "w": 360,
+    "h": 540,
+    "file": "bridal-mandala-cream-360.webp"
+   },
+   {
+    "w": 480,
+    "h": 720,
+    "file": "bridal-mandala-cream-480.webp"
+   },
+   {
+    "w": 736,
+    "h": 1104,
+    "file": "bridal-mandala-cream-736.webp"
+   }
+  ]
+ },
+ "bridal-peacock-frame": {
+  "cat": "bridal",
   "w": 735,
   "h": 881,
-  "cat": "rajwadi",
   "variants": [
    {
     "w": 360,
     "h": 432,
-    "file": "rajwadi-4-360.webp"
+    "file": "bridal-peacock-frame-360.webp"
    },
    {
     "w": 480,
     "h": 575,
-    "file": "rajwadi-4-480.webp"
+    "file": "bridal-peacock-frame-480.webp"
    },
    {
     "w": 735,
     "h": 881,
-    "file": "rajwadi-4-735.webp"
+    "file": "bridal-peacock-frame-735.webp"
    }
   ]
  }
