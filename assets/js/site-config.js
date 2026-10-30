@@ -16,8 +16,8 @@ const SITE = {
   state: "Madhya Pradesh",
 
   /* WhatsApp: country code + number, bina + / space ke */
-  whatsapp: "919755550380",
-  phoneDisplay: "+91 97555 50380",
+  whatsapp: "919755550240",
+  phoneDisplay: "+91 97555 50240",
 
   instagramHandle: "pooja_bridal_mehndi._",
   instagramUrl: "https://www.instagram.com/pooja_bridal_mehndi._",

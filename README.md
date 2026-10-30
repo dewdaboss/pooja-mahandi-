@@ -5,7 +5,7 @@ Mobile-first portfolio + booking website for **Pooja Bridal Mehndi** (mehndi art
 category-wise with rates).
 
 🔗 Instagram: [@pooja_bridal_mehndi._](https://www.instagram.com/pooja_bridal_mehndi._)
-📞 WhatsApp / Call: +91 97555 50380
+📞 WhatsApp / Call: +91 97555 50240
 
 ---
 
@@ -90,7 +90,7 @@ WhatsApp message mein chali jaati hain. Multipliers `site-config.js → calculat
 
 ### WhatsApp number / Instagram
 `assets/js/site-config.js` → `whatsapp`, `phoneDisplay`, `instagramUrl`.
-Number format: `919755550380` (bina `+`, bina space).
+Number format: `919755550240` (bina `+`, bina space).
 
 ### Rate badalna
 `site-config.js` → `categories` → us category ka `price`.
